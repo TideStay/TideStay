@@ -7,7 +7,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Brand + luxury feel */
+        :root {
+            --luxury-ink: #0f172a; /* slate-900 */
+            --luxury-muted: #475569; /* slate-600 */
+            --luxury-border: rgba(226, 232, 240, 0.85); /* slate-200-ish */
+            --luxury-shadow: 0 20px 45px rgba(2, 6, 23, 0.08);
+        }
+
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fdfbf7; scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
         
         .hero-bg {
@@ -17,6 +26,8 @@
             background-position: center;
             background-attachment: fixed;
         }
+
+        /* (About premium background removed: return to original clean look) */
 
         @media (max-width: 1024px) {
             .hero-bg {
@@ -29,7 +40,30 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: var(--luxury-shadow);
+            position: relative;
+            overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Subtle glossy sheen on hover */
+        .luxury-card::after {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -65%;
+            width: 130%;
+            height: 130%;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.35) 45%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(12deg) translateX(-40%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.7s ease;
         }
 
         @media (min-width: 768px) {
@@ -37,12 +71,17 @@
                 transform: translateY(-10px); 
                 box-shadow: 0 30px 60px -12px rgba(0, 78, 146, 0.12);
             }
+            .luxury-card:hover::after {
+                opacity: 1;
+                transform: rotate(12deg) translateX(35%);
+            }
         }
 
         .testimonial-card {
-            background: white;
-            border-left: 4px solid #94a3b8;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid rgba(148, 163, 184, 0.9);
+            box-shadow: 0 18px 38px rgba(2, 6, 23, 0.06);
             min-height: 250px;
         }
 
@@ -56,26 +95,47 @@
         .gallery-item {
             border-radius: 1.5rem;
             width: 100%;
-            height: auto;
             display: block;
+            height: auto;
+            aspect-ratio: auto;
+            /* Show the full image (no cropping) */
+            object-fit: contain;
+            object-position: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+            border: none;
         }
         .gallery-item:hover {
             transform: scale(1.02);
         }
-        .item-1 { grid-column: 1 / 3; }
-        .item-2 { grid-column: 1 / 2; }
-        .item-3 { grid-column: 2 / 3; margin-top: 40px; }
+        /* Desktop mosaic: one tall image on the left, two balanced on the right */
+        .item-1 { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .item-2 { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .item-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
 
         @media (max-width: 768px) {
-            .item-3 { margin-top: 0; }
-            .staggered-gallery { gap: 16px; }
+            .staggered-gallery {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .item-1,
+            .item-2,
+            .item-3 {
+                grid-column: auto;
+                grid-row: auto;
+            }
         }
 
         .whatsapp-btn {
-            background: #25D366;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            box-shadow: 0 16px 36px rgba(37, 211, 102, 0.28);
+            transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.25s ease;
+        }
+
+        .whatsapp-btn:hover {
+            filter: brightness(1.02);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.35);
         }
         
         /* Smooth Entrance Animations */
@@ -92,6 +152,53 @@
             height: auto;
             margin: 0 auto 1.5rem auto;
             opacity: 0.9;
+            filter: drop-shadow(0 10px 18px rgba(2, 6, 23, 0.12));
+        }
+
+        /* FAQ: remove default disclosure marker for a cleaner look */
+        .faq-item summary {
+            list-style: none;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Step-by-step form (smooth luxury transitions) */
+        #step-panels {
+            position: relative;
+        }
+        .step-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+        .step-panel[data-active="true"] {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px;
+            background: rgba(148, 163, 184, 0.45);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+            flex: 0 0 auto;
+        }
+        .step-dot.is-active {
+            background: #10b981;
+            border-color: rgba(16, 185, 129, 0.65);
+            transform: scale(1.15);
+        }
+        .step-dot.is-done {
+            background: rgba(16, 185, 129, 0.35);
+            border-color: rgba(16, 185, 129, 0.55);
         }
         
         @media (max-width: 768px) {
@@ -246,6 +353,355 @@
         </div>
     </section>
 
+    <!-- ROI Calculator Section -->
+    <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-4xl md:text-6xl italic text-slate-900">Check Your Profitability</h2>
+                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl">
+                    Use this quick estimate to understand the profitability potential before choosing TideStay for long-term or short-term management.
+                </p>
+            </div>
+
+            <div class="luxury-card p-6 md:p-10 rounded-[2rem]">
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <div class="space-y-5">
+                            <label class="block">
+                                <span class="text-slate-700 font-semibold text-sm">Purchase Price (€)</span>
+                                <input
+                                    id="roi-purchase"
+                                    type="number"
+                                    inputmode="decimal"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="e.g. 250000"
+                                    class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                />
+                            </label>
+
+                            <label class="block">
+                                <span class="text-slate-700 font-semibold text-sm">Renovation Costs (€)</span>
+                                <input
+                                    id="roi-renovation"
+                                    type="number"
+                                    inputmode="decimal"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="e.g. 30000"
+                                    class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                />
+                            </label>
+
+                            <label class="block">
+                                <span class="text-slate-700 font-semibold text-sm">Expected Monthly Rent (€)</span>
+                                <input
+                                    id="roi-rent"
+                                    type="number"
+                                    inputmode="decimal"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="e.g. 3500"
+                                    class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                />
+                            </label>
+                        </div>
+
+                        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
+                            <button
+                                type="button"
+                                id="roi-calc"
+                                class="whatsapp-btn text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-[1.02] transition transform inline-flex items-center justify-center"
+                            >
+                                Calculate ROI
+                            </button>
+                            <div class="text-slate-500 text-sm font-light italic">
+                                We subtract 200€ fixed costs/month + 20% management fee.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-slate-100 bg-white/60 p-6 md:p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="h-2.5 w-2.5 rounded-full bg-emerald-500"></div>
+                            <div class="text-slate-900 font-semibold text-lg">Your Results</div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <div class="text-slate-500 text-sm font-semibold uppercase tracking-widest">
+                                    Annual Net Profit
+                                </div>
+                                <div id="roi-annual-net" class="text-4xl md:text-5xl text-slate-900 font-light mt-2">
+                                    —
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="text-slate-500 text-sm font-semibold uppercase tracking-widest">
+                                    ROI
+                                </div>
+                                <div class="flex items-end gap-3 mt-2">
+                                    <div id="roi-percent" class="text-4xl md:text-5xl text-slate-900 font-light">
+                                        —
+                                    </div>
+                                    <div class="pb-1 text-slate-500 text-sm font-semibold">%</div>
+                                </div>
+                            </div>
+
+                            <div id="roi-hint" class="text-slate-500 text-sm font-light italic leading-relaxed">
+                                Enter the numbers to see an estimate.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step-by-Step Form -->
+    <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-4xl md:text-6xl italic text-slate-900">Property Inquiry</h2>
+                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl">
+                    Tell us where your property is and we will get back to you.
+                </p>
+            </div>
+
+            <div class="luxury-card p-6 md:p-10 rounded-[2rem]">
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8">
+                    <div class="flex items-center gap-3">
+                        <span id="step-dot-1" class="step-dot is-active"></span>
+                        <span class="text-slate-900 font-semibold text-sm md:text-base">1. Location</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="step-dot-2" class="step-dot"></span>
+                        <span class="text-slate-900 font-semibold text-sm md:text-base">2. Condition</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="step-dot-3" class="step-dot"></span>
+                        <span class="text-slate-900 font-semibold text-sm md:text-base">3. Contact</span>
+                    </div>
+                </div>
+
+                <form id="property-stepper" class="relative">
+                    <div id="step-panels">
+                        <!-- Step 1 -->
+                        <div id="step-panel-1" class="step-panel" data-step="1" data-active="true">
+                            <div class="space-y-5 max-w-xl">
+                                <label class="block">
+                                    <span class="text-slate-700 font-semibold text-sm">1) Where is the property located?</span>
+                                    <input
+                                        id="step1-location"
+                                        type="text"
+                                        required
+                                        placeholder="e.g. Ericeira / São Sebastião / near Lisbon"
+                                        class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                    />
+                                </label>
+                                <div class="text-slate-500 text-sm font-light italic">
+                                    You can write city, neighborhood, or approximate area.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div id="step-panel-2" class="step-panel" data-step="2" data-active="false">
+                            <div class="space-y-5 max-w-xl">
+                                <label class="block">
+                                    <span class="text-slate-700 font-semibold text-sm">2) What is the property condition?</span>
+                                    <select
+                                        id="step2-condition"
+                                        required
+                                        class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                    >
+                                        <option value="" selected disabled>Select one</option>
+                                        <option value="Renovated">Renovated / Updated</option>
+                                        <option value="New">New / Recently refurbished</option>
+                                        <option value="Older-ready">Older but ready for rentals</option>
+                                        <option value="In-progress">In progress</option>
+                                        <option value="Not-sure">Not sure yet</option>
+                                    </select>
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-slate-700 font-semibold text-sm">Optional notes</span>
+                                    <textarea
+                                        id="step2-notes"
+                                        rows="3"
+                                        placeholder="Any details that could help us advise you (size, upgrades, timeline...)"
+                                        class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300 resize-none"
+                                    ></textarea>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div id="step-panel-3" class="step-panel" data-step="3" data-active="false">
+                            <div class="space-y-5 max-w-xl">
+                                <label class="block">
+                                    <span class="text-slate-700 font-semibold text-sm">3) Your name</span>
+                                    <input
+                                        id="step3-name"
+                                        type="text"
+                                        required
+                                        placeholder="Full name"
+                                        class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                    />
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-slate-700 font-semibold text-sm">Email</span>
+                                    <input
+                                        id="step3-email"
+                                        type="email"
+                                        required
+                                        placeholder="name@example.com"
+                                        class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                    />
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-slate-700 font-semibold text-sm">Phone / WhatsApp</span>
+                                    <input
+                                        id="step3-phone"
+                                        type="tel"
+                                        required
+                                        inputmode="tel"
+                                        placeholder="+351..."
+                                        class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                                    />
+                                </label>
+
+                                <div class="text-slate-500 text-sm font-light italic">
+                                    After you press Send, your email client will open with all details filled in.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+                        <button
+                            id="step-back"
+                            type="button"
+                            class="rounded-full border border-slate-200 bg-white/70 px-8 py-4 text-lg font-bold text-slate-800 hover:bg-white transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Back
+                        </button>
+
+                        <div class="flex gap-3">
+                            <button
+                                id="step-next"
+                                type="button"
+                                class="rounded-full border border-slate-200 bg-white px-8 py-4 text-lg font-bold text-slate-800 hover:bg-white/80 transition"
+                            >
+                                Next
+                            </button>
+
+                            <button
+                                id="step-submit"
+                                type="submit"
+                                class="whatsapp-btn text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-[1.02] transition transform inline-flex items-center justify-center"
+                            >
+                                Send Request
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="step-form-status" class="mt-4 text-slate-500 text-sm font-light italic" role="status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-4xl md:text-6xl italic text-slate-900">FAQ</h2>
+                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl">
+                    Everything owners often ask before choosing short- or long-term management.
+                </p>
+            </div>
+
+            <div class="luxury-card p-6 md:p-10 rounded-[2rem]">
+                <div class="max-w-2xl mx-auto">
+                    <label class="block">
+                        <span class="text-slate-700 font-semibold text-sm">Search questions</span>
+                        <input
+                            id="faq-search"
+                            type="search"
+                            autocomplete="off"
+                            placeholder="Type a keyword (tax, license, maintenance...)"
+                            class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
+                        />
+                    </label>
+                    <div class="text-slate-500 text-xs md:text-sm font-light italic mt-3 text-center">
+                        Tip: Try “tax”, “license”, “maintenance”, “SEF”.
+                    </div>
+                </div>
+
+                <div class="mt-10 space-y-4 md:space-y-5">
+                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
+                        <summary class="cursor-pointer flex items-start justify-between gap-4">
+                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">How is rental income taxed in Portugal?</span>
+                            <span class="text-slate-400 font-light">+</span>
+                        </summary>
+                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
+                            Tax treatment depends on your situation (individual vs company), property type, and deductions you qualify for.
+                            We help you stay organized with the reporting that usually comes with guest stays, but you should confirm the final tax calculation with a qualified accountant.
+                        </div>
+                    </details>
+
+                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
+                        <summary class="cursor-pointer flex items-start justify-between gap-4">
+                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">Do I need a license for short-term rentals (AL)?</span>
+                            <span class="text-slate-400 font-light">+</span>
+                        </summary>
+                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
+                            In many cases, short-term rentals require a Local Accommodation registration/license (often referred to as “AL”).
+                            Requirements can vary by municipality and can change over time. We can guide you on what applies to your property and help manage the operations, while you confirm legal requirements with the right local professionals.
+                        </div>
+                    </details>
+
+                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
+                        <summary class="cursor-pointer flex items-start justify-between gap-4">
+                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">What about SEF/guest reporting and tourist tax?</span>
+                            <span class="text-slate-400 font-light">+</span>
+                        </summary>
+                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
+                            Depending on the current rules, guest data reporting and tourist tax processes must be handled correctly.
+                            As part of our management, we make sure the required steps are handled so you have peace of mind—again, final responsibility and tax specifics should be verified with your advisor.
+                        </div>
+                    </details>
+
+                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
+                        <summary class="cursor-pointer flex items-start justify-between gap-4">
+                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">How do you handle maintenance and repairs?</span>
+                            <span class="text-slate-400 font-light">+</span>
+                        </summary>
+                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
+                            We use a structured approach: preventive check-ins, clear cleaning coordination, and fast response when issues happen.
+                            For minor repairs and urgent items, we coordinate with trusted local professionals and document everything so your property remains in excellent condition.
+                        </div>
+                    </details>
+
+                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
+                        <summary class="cursor-pointer flex items-start justify-between gap-4">
+                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">Who manages utilities and ongoing costs?</span>
+                            <span class="text-slate-400 font-light">+</span>
+                        </summary>
+                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
+                            It depends on your agreement. In our premium options, we can manage utilities (water/electric/internet coordination) and keep costs predictable.
+                            We also plan around recurring monthly expenses so owners understand the real net outcome.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="py-20 md:py-32 px-6 bg-white border-t border-slate-100">
         <div class="max-w-3xl mx-auto text-center">
@@ -261,6 +717,272 @@
             </a>
         </div>
     </section>
+
+    <script>
+        (function () {
+            const $ = (id) => document.getElementById(id);
+
+            const purchaseEl = $("roi-purchase");
+            const renovationEl = $("roi-renovation");
+            const rentEl = $("roi-rent");
+            const calcBtn = $("roi-calc");
+
+            const annualNetEl = $("roi-annual-net");
+            const percentEl = $("roi-percent");
+            const hintEl = $("roi-hint");
+
+            // Currency formatting
+            const fmtEUR = (n) => new Intl.NumberFormat(undefined, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
+            const fmtPct = (n) => new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(n);
+
+            const parse = (v) => {
+                const n = Number.parseFloat(String(v).trim().replace(",", "."));
+                return Number.isFinite(n) ? n : NaN;
+            };
+
+            function calculate() {
+                const purchase = parse(purchaseEl.value);
+                const renovation = parse(renovationEl.value);
+                const rent = parse(rentEl.value);
+
+                if (!Number.isFinite(purchase) || !Number.isFinite(renovation) || !Number.isFinite(rent)) {
+                    annualNetEl.textContent = "—";
+                    percentEl.textContent = "—";
+                    hintEl.textContent = "Enter the numbers to see an estimate.";
+                    return;
+                }
+
+                const fixedCostsMonthly = 200;
+                const managementRate = 0.20;
+
+                // Net profit after fixed costs and management fee
+                const monthlyNet = rent - fixedCostsMonthly - (managementRate * rent);
+                const annualNet = monthlyNet * 12;
+
+                const investment = purchase + renovation;
+                const roi = investment > 0 ? (annualNet / investment) * 100 : 0;
+
+                annualNetEl.textContent = fmtEUR(annualNet);
+                percentEl.textContent = fmtPct(roi);
+
+                if (annualNet >= 0) {
+                    hintEl.textContent = "This is an estimate based on the inputs provided.";
+                } else {
+                    hintEl.textContent = "Estimated net profit is negative. Consider adjusting assumptions.";
+                }
+            }
+
+            // Recalculate instantly when user types (feels responsive)
+            [purchaseEl, renovationEl, rentEl].forEach((el) => {
+                el.addEventListener("input", calculate);
+                el.addEventListener("change", calculate);
+            });
+
+            calcBtn.addEventListener("click", calculate);
+
+            // FAQ search: filters questions by keyword
+            const faqSearchEl = document.getElementById("faq-search");
+            if (faqSearchEl) {
+                const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+                faqItems.forEach((el) => {
+                    el.dataset.faqText = (el.innerText || "").toLowerCase();
+                });
+
+                const filterFaq = () => {
+                    const q = (faqSearchEl.value || "").trim().toLowerCase();
+                    faqItems.forEach((el) => {
+                        const text = (el.dataset.faqText || "");
+                        el.style.display = q.length === 0 || text.includes(q) ? "" : "none";
+                    });
+                };
+
+                faqSearchEl.addEventListener("input", filterFaq);
+                filterFaq();
+            }
+
+            // Step-by-Step form: 3 steps + smooth transitions + email submission (mailto)
+            const stepperForm = $("property-stepper");
+            if (stepperForm) {
+                const panels = [1, 2, 3].map((n) => document.getElementById(`step-panel-${n}`));
+                const stepDots = [1, 2, 3].map((n) => document.getElementById(`step-dot-${n}`));
+                const panelsWrap = document.getElementById("step-panels");
+
+                const backBtn = $("step-back");
+                const nextBtn = $("step-next");
+                const statusEl = $("step-form-status");
+
+                const locationEl = $("step1-location");
+                const conditionEl = $("step2-condition");
+                const notesEl = $("step2-notes");
+                const nameEl = $("step3-name");
+                const emailEl = $("step3-email");
+                const phoneEl = $("step3-phone");
+
+                let currentStep = 1;
+
+                const setStatus = (msg) => {
+                    if (!statusEl) return;
+                    statusEl.textContent = msg || "";
+                };
+
+                const setInvalid = (el, isInvalid) => {
+                    if (!el) return;
+                    const cls = ["border-red-200", "ring-red-200", "bg-red-50/40"];
+                    if (isInvalid) {
+                        el.classList.add(...cls);
+                    } else {
+                        el.classList.remove(...cls);
+                    }
+                };
+
+                const validateStep = (step) => {
+                    setStatus("");
+                    let ok = true;
+
+                    if (step === 1) {
+                        if (!locationEl || !String(locationEl.value).trim()) {
+                            ok = false;
+                            setInvalid(locationEl, true);
+                            setStatus("Please add the property location to continue.");
+                        } else {
+                            setInvalid(locationEl, false);
+                        }
+                    }
+
+                    if (step === 2) {
+                        if (!conditionEl || !String(conditionEl.value).trim()) {
+                            ok = false;
+                            setInvalid(conditionEl, true);
+                            setStatus("Please select the property condition to continue.");
+                        } else {
+                            setInvalid(conditionEl, false);
+                        }
+                    }
+
+                    if (step === 3) {
+                        const emailOk = !!emailEl && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(emailEl.value).trim());
+                        const nameOk = !!nameEl && String(nameEl.value).trim().length >= 2;
+                        const phoneOk = !!phoneEl && String(phoneEl.value).trim().length >= 5;
+
+                        if (!nameOk) {
+                            ok = false;
+                            setInvalid(nameEl, true);
+                        } else {
+                            setInvalid(nameEl, false);
+                        }
+
+                        if (!emailOk) {
+                            ok = false;
+                            setInvalid(emailEl, true);
+                        } else {
+                            setInvalid(emailEl, false);
+                        }
+
+                        if (!phoneOk) {
+                            ok = false;
+                            setInvalid(phoneEl, true);
+                        } else {
+                            setInvalid(phoneEl, false);
+                        }
+
+                        if (!ok) setStatus("Please complete your contact details correctly.");
+                    }
+
+                    return ok;
+                };
+
+                const updateDots = () => {
+                    stepDots.forEach((dot, idx) => {
+                        const stepNum = idx + 1;
+                        if (!dot) return;
+                        dot.classList.remove("is-active", "is-done");
+                        if (stepNum < currentStep) {
+                            dot.classList.add("is-done");
+                        } else if (stepNum === currentStep) {
+                            dot.classList.add("is-active");
+                        }
+                    });
+                };
+
+                const showStep = (stepNum) => {
+                    if (stepNum < 1 || stepNum > 3) return;
+                    currentStep = stepNum;
+
+                    const activePanel = panels[stepNum - 1];
+                    if (panelsWrap && activePanel) {
+                        panelsWrap.style.minHeight = `${activePanel.offsetHeight}px`;
+                    }
+
+                    panels.forEach((panel, idx) => {
+                        if (!panel) return;
+                        const isActive = idx === stepNum - 1;
+                        panel.dataset.active = isActive ? "true" : "false";
+                    });
+
+                    updateDots();
+
+                    if (backBtn) backBtn.disabled = stepNum === 1;
+                    if (nextBtn) nextBtn.textContent = stepNum === 2 ? "Review" : "Next";
+                    setStatus(stepNum === 3 ? "Ready when you are. Send your details." : "");
+                };
+
+                const openEmail = () => {
+                    const to = "tidestay.management@gmail.com";
+
+                    const location = locationEl ? String(locationEl.value).trim() : "";
+                    const condition = conditionEl ? String(conditionEl.value).trim() : "";
+                    const notes = notesEl ? String(notesEl.value).trim() : "";
+                    const name = nameEl ? String(nameEl.value).trim() : "";
+                    const email = emailEl ? String(emailEl.value).trim() : "";
+                    const phone = phoneEl ? String(phoneEl.value).trim() : "";
+
+                    const subject = `Property inquiry - ${location || "Portugal"}`;
+                    const body = [
+                        "New property inquiry via TideStay website",
+                        "",
+                        "1) Property location:",
+                        location || "-",
+                        "",
+                        "2) Property condition:",
+                        condition || "-",
+                        notes ? `Additional notes: ${notes}` : "",
+                        "",
+                        "3) Contact details:",
+                        `Name: ${name || "-"}`,
+                        `Email: ${email || "-"}`,
+                        `Phone / WhatsApp: ${phone || "-"}`,
+                    ].join("\n");
+
+                    // Opens the user's email client with all fields pre-filled.
+                    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    window.location.href = mailto;
+                };
+
+                if (backBtn) {
+                    backBtn.addEventListener("click", () => {
+                        if (currentStep > 1) showStep(currentStep - 1);
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener("click", () => {
+                        if (!validateStep(currentStep)) return;
+                        if (currentStep < 3) showStep(currentStep + 1);
+                    });
+                }
+
+                stepperForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    if (!validateStep(3)) return;
+                    setStatus("Opening your email client…");
+                    openEmail();
+                });
+
+                // Init
+                showStep(1);
+            }
+        })();
+    </script>
 
     <!-- Footer -->
     <footer class="py-16 md:py-24 bg-[#fdfbf7] border-t border-slate-100 text-center">
