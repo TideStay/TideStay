@@ -223,88 +223,181 @@
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 md:py-28 px-6 bg-[#fdfbf7]">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-6xl mb-16 md:mb-24 italic text-slate-900 text-center">Professional Management, Personal Care</h2>
-            
-            <div class="grid md:grid-cols-2 gap-16 items-start">
-                <!-- Staggered Gallery -->
-                <div class="staggered-gallery order-2 md:order-1">
-                    <img src="https://i.ibb.co/jP0SXbVD/TIDESTAY.jpg" alt="Ericeira Shore" class="gallery-item item-1">
-                    <img src="https://i.ibb.co/5g57c5D3/3-TIDESTAY.jpg" alt="Interior Detail" class="gallery-item item-2">
-                    <img src="https://img00.rhimg.com/h.13562607.795.500.0.ffffff.1f34bf97.jpg" alt="Property View" class="gallery-item item-3">
+    <!-- About Section (Luxury, Elegant & Visual, with Wave Animation) -->
+    <section id="about" class="relative py-20 md:py-36 px-4 bg-[#fdfbf7] overflow-hidden">
+        <!-- Subtle animated wave: always kept elegant & chic -->
+        <style>
+            .tide-wave {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 220%;
+                height: 160px;
+                opacity: 0.18;
+                z-index: 1;
+                pointer-events: none;
+            }
+            @media (max-width: 768px) {
+                .tide-wave { height: 80px; }
+            }
+            .about-card {
+                background: rgba(255,255,255,0.92);
+                border-radius: 2rem;
+                box-shadow: 0 8px 32px rgba(36,38,49,0.10);
+                border: 1px solid rgba(226,232,240,0.40);
+                backdrop-filter: blur(11px);
+                overflow: hidden;
+            }
+            .about-gallery {
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+            .about-gallery img {
+                border-radius: 18px;
+                box-shadow: 0 6px 28px rgba(15,23,42,0.10), 0 1.5px 4px rgba(148,163,184,0.10);
+                border: 1.5px solid #ececec;
+                transition: transform 0.32s cubic-bezier(.43,.09,.45,.86), box-shadow 0.28s ease;
+            }
+            .about-gallery img:hover {
+                transform: scale(1.025) translateY(-5px);
+                box-shadow: 0 14px 48px rgba(16,24,39,0.14);
+                z-index: 2;
+            }
+            /* Elegant stagger effect */
+            .about-gallery .img2 { margin-left: 45px;}
+            .about-gallery .img3 { margin-left: 90px;}
+            @media (max-width: 1023px) {
+                .about-gallery .img2 { margin-left: 15px;}
+                .about-gallery .img3 { margin-left: 25px;}
+            }
+        </style>
+        
+        <svg class="tide-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#7fc6db" fill-opacity="1" d="M0,224L120,218.7C240,213,480,203,720,186.7C960,171,1200,149,1320,138.7L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
+                <animate attributeName="d"
+                    dur="6s"
+                    repeatCount="indefinite"
+                    values="
+                    M0,224L120,218.7C240,213,480,203,720,186.7C960,171,1200,149,1320,138.7L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z;
+                    M0,200L120,186.7C240,173,480,133,720,149.7C960,167,1200,229,1320,245.7L1440,256L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z;
+                    M0,224L120,218.7C240,213,480,203,720,186.7C960,171,1200,149,1320,138.7L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z
+                    "
+                />
+            </path>
+        </svg>
+        
+        <div class="relative z-10 max-w-6xl mx-auto">
+            <div class="about-card grid md:grid-cols-2 gap-0 items-stretch shadow-lg">
+                <!-- Gallery, now more visual & slightly dynamic -->
+                <div class="about-gallery p-8 pr-3 md:p-12 md:pr-2 order-2 md:order-1 justify-center">
+                    <img src="https://i.ibb.co/jP0SXbVD/TIDESTAY.jpg" alt="Ericeira Shore" class="img1">
+                    <img src="https://i.ibb.co/5g57c5D3/3-TIDESTAY.jpg" alt="Interior Detail" class="img2">
+                    <img src="https://img00.rhimg.com/h.13562607.795.500.0.ffffff.1f34bf97.jpg" alt="Property View" class="img3">
                 </div>
-
-                <!-- Copy -->
-                <div class="text-lg md:text-xl text-slate-600 leading-relaxed space-y-8 font-light text-left order-1 md:order-2">
-                    <p>
-                        <span class="text-2xl md:text-3xl text-slate-900 block mb-4 italic">Welcome to TideStay.</span>
-                        we believe property management should be as unique as the homes we care for. While others prioritize volume, we focus on curation. By intentionally maintaining a limited portfolio, we ensure that every property receives the uncompromising attention it deserves.
-                    </p>
-                    <p>
-                       We are a dynamic, family-driven team, treating every partner not as a client, but as part of our inner circle. From 24/7 proactive support to meticulous on-site inspections, we bridge the gap between high-end professional standards and a deeply personal touch. Our mission is simple: to ensure your property thrives, your guests are inspired, and you enjoy absolute peace of mind.
-                    </p>
+                <!-- Copy, left-aligned and refined -->
+                <div class="flex flex-col justify-center p-8 pl-3 md:p-12 md:pl-8 order-1 md:order-2">
+                    <h2 class="text-3xl md:text-5xl mb-10 font-serif italic text-slate-900 font-semibold leading-tight text-left">
+                        Professional Management,<br>Personal Care
+                    </h2>
+                    <div class="text-lg md:text-xl text-slate-600 leading-relaxed font-light space-y-7">
+                        <p>
+                            <span class="block text-2xl md:text-3xl text-slate-900 mb-4 italic font-serif font-semibold">Welcome to TideStay.</span>
+                            We believe property management should be as unique as the homes we care for.<br>
+                            While others prioritize volume, we favor curation – keeping our portfolio limited so every property receives truly uncompromising attention.
+                        </p>
+                        <p>
+                            As a dynamic, family-driven team, we treat every partner not as a client, but as part of our inner circle.<br>
+                            With 24/7 proactive support and meticulous on-site inspections, we bridge high-end professionalism with a personal touch. Our mission: your property thrives, your guests are inspired, and you enjoy lasting peace of mind.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Plans Section -->
-    <section id="plans" class="py-20 md:py-32 px-6 bg-[#ebf4f5]">
-        <div class="max-w-7xl mx-auto text-center mb-20">
-            <h2 class="text-4xl md:text-6xl italic text-slate-900">Our Plans</h2>
-            <p class="text-slate-500 mt-6 font-light italic text-lg md:text-2xl">Tailored to fit your needs, finalized together.</p>
-        </div>
-        
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 md:gap-10 items-stretch">
-            
-            <!-- Smart Plan -->
-            <div class="luxury-card p-8 md:p-12 rounded-[2.5rem] flex flex-col">
-                <h3 class="text-3xl md:text-4xl mb-2 italic text-slate-800">Smart</h3>
-                <p class="text-slate-400 text-xs mb-8 uppercase tracking-widest font-semibold">Efficient • Digital • High-Yield</p>
-                <div class="text-5xl md:text-6xl font-light mb-10 text-slate-900">15% <span class="text-[10px] uppercase tracking-widest text-slate-400 block mt-3 font-sans font-bold">Management Fee</span></div>
-                <ul class="space-y-5 text-slate-600 font-light text-sm border-t border-slate-100 pt-10 flex-grow text-left">
-                    <li><strong class="text-slate-900">Professional Listing:</strong> Full optimization on Airbnb & Booking.com.</li>
-                    <li><strong class="text-slate-900">Dynamic Pricing:</strong> AI-driven daily price adjustments.</li>
-                    <li><strong class="text-slate-900">24/7 Guest Support:</strong> We handle all inquiries and relations.</li>
-                    <li><strong class="text-slate-900">Seamless Self Check-in:</strong> Digital arrival guides & smart-lock.</li>
-                    <li><strong class="text-slate-900">Cleaning Coordination:</strong> Professional automated scheduling.</li>
-                    <li><strong class="text-slate-900">Legal Compliance:</strong> SEF reporting and Tourist Tax.</li>
-                </ul>
-            </div>
+    <!-- Plans Section (Redesigned) -->
+    <section id="plans" class="py-20 md:py-32 px-6 bg-[#f6f4ee]">
+      <style>
+        .plan-card {
+          transition: transform 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1);
+          box-shadow: 0 6px 36px 0 rgba(20, 24, 31, 0.04);
+        }
+        .plan-card:hover {
+          transform: translateY(-12px) scale(1.03);
+          box-shadow: 0 18px 42px 0 rgba(20,24,31,.13);
+          z-index: 22;
+        }
+        @media (max-width: 768px) {
+          .plan-card:hover {
+            transform: none;
+            box-shadow: 0 8px 24px 0 rgba(20,24,31,.06);
+          }
+        }
+      </style>
+      <div class="max-w-7xl mx-auto text-center mb-20">
+        <h2 class="text-4xl md:text-6xl italic text-slate-900 font-serif">Our Plans</h2>
+        <p class="text-slate-500 mt-6 font-light italic text-lg md:text-2xl">Tailored to fit your needs, finalized together.</p>
+      </div>
+      <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 md:gap-10 items-stretch">
 
-            <!-- Popular Plan -->
-            <div class="luxury-card p-8 md:p-12 rounded-[2.5rem] flex flex-col bg-white border-blue-100 shadow-2xl md:scale-105 relative z-20 my-8 md:my-0">
-                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-8 py-2 rounded-full text-[10px] md:text-xs font-bold tracking-widest uppercase shadow-lg">The Personal Choice</div>
-                <h3 class="text-3xl md:text-4xl mb-2 italic text-slate-800">Popular</h3>
-                <p class="text-blue-400 text-xs mb-8 uppercase tracking-widest font-semibold">Hands-On • Professional • Stress-Free</p>
-                <div class="text-5xl md:text-6xl font-light mb-10 text-slate-900">20% <span class="text-[10px] uppercase tracking-widest text-slate-400 block mt-3 font-sans font-bold">Management Fee</span></div>
-                <p class="font-bold text-slate-900 italic mb-6 text-sm text-left">Everything in SMART, plus:</p>
-                <ul class="space-y-5 text-slate-700 font-light text-sm border-t border-slate-100 pt-8 flex-grow text-left">
-                    <li><strong class="text-slate-900">Personal Welcome:</strong> In-person check-in for a boutique touch.</li>
-                    <li><strong class="text-slate-900">Quality Inspections:</strong> We physically verify every cleaning.</li>
-                    <li><strong class="text-slate-900">Linen & Laundry:</strong> Management of hotel-grade linens.</li>
-                    <li><strong class="text-slate-900">On-Site Support:</strong> Handling minor repairs and technical issues.</li>
-                    <li><strong class="text-slate-900">Local Welcome Gift:</strong> Curated treats for 5-star reviews.</li>
-                </ul>
-            </div>
-
-            <!-- Plus Plan -->
-            <div class="luxury-card p-8 md:p-12 rounded-[2.5rem] flex flex-col border-2 border-slate-200">
-                <h3 class="text-3xl md:text-4xl mb-2 italic text-slate-800">Plus</h3>
-                <p class="text-slate-400 text-xs mb-8 uppercase tracking-widest font-semibold">Total Peace • Premium Care</p>
-                <div class="text-5xl md:text-6xl font-light mb-10 text-slate-900">25% <span class="text-[10px] uppercase tracking-widest text-slate-400 block mt-3 font-sans font-bold">Management Fee</span></div>
-                <p class="font-bold text-slate-900 italic mb-6 text-sm text-left">Everything in POPULAR, plus:</p>
-                <ul class="space-y-5 text-slate-600 font-light text-sm border-t border-slate-100 pt-8 flex-grow text-left">
-                    <li><strong class="text-slate-900">Weekly Inspections:</strong> Essential for the coastal climate.</li>
-                    <li><strong class="text-slate-900">Utility Management:</strong> We handle all bills (Water, Elec, Net).</li>
-                    <li><strong class="text-slate-900">Ericeira Concierge:</strong> Booking surfing, transfers, and dining.</li>
-                    <li><strong class="text-slate-900">Interior Styling:</strong> Professional seasonal decor updates.</li>
-                    <li><strong class="text-slate-900">Performance Analytics:</strong> Monthly financial deep-dives.</li>
-                </ul>
-            </div>
+        <!-- Smart Plan -->
+        <div class="plan-card bg-white p-8 md:p-12 rounded-3xl flex flex-col border border-slate-200 relative">
+          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight">Smart</h3>
+          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold">Efficient • Digital • High-Yield</p>
+          <div class="text-5xl md:text-6xl font-light mb-10 text-slate-800">
+            15%
+            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold">Management Fee</span>
+          </div>
+          <ul class="space-y-5 text-slate-600 font-light text-sm border-t border-slate-100 pt-10 flex-grow text-left list-disc list-inside">
+            <li><b class="text-slate-800">Professional Listing:</b> Full optimization on Airbnb & Booking.com.</li>
+            <li><b class="text-slate-800">Dynamic Pricing:</b> AI-driven daily price adjustments.</li>
+            <li><b class="text-slate-800">24/7 Guest Support:</b> We handle all inquiries and relations.</li>
+            <li><b class="text-slate-800">Seamless Self Check-in:</b> Digital arrival guides & smart-lock.</li>
+            <li><b class="text-slate-800">Cleaning Coordination:</b> Professional automated scheduling.</li>
+            <li><b class="text-slate-800">Legal Compliance:</b> SEF reporting and Tourist Tax.</li>
+          </ul>
         </div>
+
+        <!-- Popular Plan -->
+        <div class="plan-card bg-white p-9 md:p-14 rounded-3xl flex flex-col border border-slate-200 relative shadow-xl ring-1 ring-slate-100 z-10">
+          <div class="absolute left-1/2 -translate-x-1/2 -top-5">
+            <span class="bg-slate-100 text-blue-700 px-6 py-[6px] rounded-full text-xs uppercase font-semibold tracking-wide shadow-md" style="font-size:11px">The Personal Choice</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight">Popular</h3>
+          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold">Hands-On • Professional • Stress-Free</p>
+          <div class="text-5xl md:text-6xl font-light mb-10 text-slate-800">
+            20%
+            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold">Management Fee</span>
+          </div>
+          <p class="font-bold text-slate-800 italic mb-5 text-sm text-left">Everything in Smart, plus:</p>
+          <ul class="space-y-5 text-slate-700 font-light text-sm border-t border-slate-100 pt-8 flex-grow text-left list-disc list-inside ">
+            <li><b class="text-slate-800">Personal Welcome:</b> In-person check-in for a boutique touch.</li>
+            <li><b class="text-slate-800">Quality Inspections:</b> We physically verify every cleaning.</li>
+            <li><b class="text-slate-800">Linen & Laundry:</b> Management of hotel-grade linens.</li>
+            <li><b class="text-slate-800">On-Site Support:</b> Handling minor repairs and technical issues.</li>
+            <li><b class="text-slate-800">Local Welcome Gift:</b> Curated treats for 5-star reviews.</li>
+          </ul>
+        </div>
+
+        <!-- Plus Plan -->
+        <div class="plan-card bg-white p-8 md:p-12 rounded-3xl flex flex-col border border-slate-200 relative">
+          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight">Plus</h3>
+          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold">Total Peace • Premium Care</p>
+          <div class="text-5xl md:text-6xl font-light mb-10 text-slate-800">25%
+            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold">Management Fee</span>
+          </div>
+          <p class="font-bold text-slate-800 italic mb-5 text-sm text-left">Everything in Popular, plus:</p>
+          <ul class="space-y-5 text-slate-600 font-light text-sm border-t border-slate-100 pt-8 flex-grow text-left list-disc list-inside">
+            <li><b class="text-slate-800">Weekly Inspections:</b> Essential for the coastal climate.</li>
+            <li><b class="text-slate-800">Utility Management:</b> We handle all bills (Water, Elec, Net).</li>
+            <li><b class="text-slate-800">Ericeira Concierge:</b> Booking surfing, transfers, and dining.</li>
+            <li><b class="text-slate-800">Interior Styling:</b> Professional seasonal decor updates.</li>
+            <li><b class="text-slate-800">Performance Analytics:</b> Monthly financial deep-dives.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Testimonials -->
