@@ -578,7 +578,7 @@
                     </div>
                 </div>
 
-                <form id="property-stepper" class="relative">
+                <form id="property-stepper" class="relative" action="https://formspree.io/f/xqegqekn" method="POST">
                     <div id="step-panels">
                         <!-- Step 1 -->
                         <div id="step-panel-1" class="step-panel" data-step="1" data-active="true">
@@ -587,6 +587,7 @@
                                     <span class="text-slate-700 font-semibold text-sm">1) Where is the property located?</span>
                                     <input
                                         id="step1-location"
+                                        name="location"
                                         type="text"
                                         required
                                         placeholder="e.g. Ericeira / São Sebastião / near Lisbon"
@@ -606,6 +607,7 @@
                                     <span class="text-slate-700 font-semibold text-sm">2) What is the property condition?</span>
                                     <select
                                         id="step2-condition"
+                                        name="status"
                                         required
                                         class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                     >
@@ -622,6 +624,7 @@
                                     <span class="text-slate-700 font-semibold text-sm">Optional notes</span>
                                     <textarea
                                         id="step2-notes"
+                                        name="notes"
                                         rows="3"
                                         placeholder="Any details that could help us advise you (size, upgrades, timeline...)"
                                         class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300 resize-none"
@@ -637,6 +640,7 @@
                                     <span class="text-slate-700 font-semibold text-sm">3) Your name</span>
                                     <input
                                         id="step3-name"
+                                        name="full-name"
                                         type="text"
                                         required
                                         placeholder="Full name"
@@ -648,6 +652,7 @@
                                     <span class="text-slate-700 font-semibold text-sm">Email</span>
                                     <input
                                         id="step3-email"
+                                        name="email"
                                         type="email"
                                         required
                                         placeholder="name@example.com"
@@ -659,6 +664,7 @@
                                     <span class="text-slate-700 font-semibold text-sm">Phone / WhatsApp</span>
                                     <input
                                         id="step3-phone"
+                                        name="phone"
                                         type="tel"
                                         required
                                         inputmode="tel"
@@ -668,7 +674,7 @@
                                 </label>
 
                                 <div class="text-slate-500 text-sm font-light italic">
-                                    After you press Send, your email client will open with all details filled in.
+                                    After you press Send, we will receive your inquiry and get back to you shortly.
                                 </div>
                             </div>
                         </div>
@@ -707,6 +713,91 @@
             </div>
         </div>
     </section>
+    <script>
+        // Add ENTER key navigation for property-stepper
+        (function() {
+            const stepperForm = document.getElementById('property-stepper');
+            if (!stepperForm) return;
+
+            // Utility: Get current active step number (1-based)
+            function getCurrentStep() {
+                const activePanel = stepperForm.querySelector('.step-panel[data-active="true"]');
+                if (!activePanel) return null;
+                return parseInt(activePanel.getAttribute("data-step"), 10);
+            }
+
+            // Utility: Validate the current step (should match existing JS)
+            function validateStep(stepNum) {
+                // Grab inputs as in the main JS
+                if (stepNum === 1) {
+                    const loc = document.getElementById("step1-location");
+                    return loc && loc.value.trim().length > 0;
+                }
+                if (stepNum === 2) {
+                    const cond = document.getElementById("step2-condition");
+                    return cond && cond.value && cond.value !== "";
+                }
+                if (stepNum === 3) {
+                    const name = document.getElementById("step3-name");
+                    const email = document.getElementById("step3-email");
+                    const phone = document.getElementById("step3-phone");
+                    return (
+                        name && name.value.trim().length > 0 &&
+                        email && email.value.trim().length > 0 &&
+                        phone && phone.value.trim().length > 0
+                    );
+                }
+                return false;
+            }
+
+            // Utility: Move to next step or submit
+            function nextStepOrSubmit() {
+                const current = getCurrentStep();
+                if (!current) return false;
+                if (!validateStep(current)) return false;
+                // Steps 1,2 move next, Step 3 submits
+                if (current < 3) {
+                    // Trigger Next button click
+                    const nextBtn = document.getElementById("step-next");
+                    if (nextBtn) nextBtn.click();
+                } else if (current === 3) {
+                    // Let the form naturally submit (to Formspree)
+                    // Do not open mailto, just let browser submit
+                    stepperForm.requestSubmit ? stepperForm.requestSubmit() : stepperForm.submit();
+                }
+                return true;
+            }
+
+            // Listen for ENTER on all relevant fields
+            // On inputs/selects within visible active panel, ENTER triggers next/submit
+            stepperForm.addEventListener("keydown", function(e) {
+                // Only act on Enter key (not Shift+Enter etc)
+                if (
+                    e.key !== "Enter" ||
+                    e.defaultPrevented
+                ) return;
+
+                // Only run if "active step" panel is visible
+                let isInput = e.target.tagName === "INPUT" || e.target.tagName === "SELECT";
+                let isTextarea = e.target.tagName === "TEXTAREA";
+
+                // CTRL/ALT/SHIFT+Enter should NOT progress step/submit
+                if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) return;
+
+                // Special-case textareas: only move to next if not multiline (prevent line break)
+                if (isTextarea) {
+                    // Prevent default only if textarea is NOT multiline (so pressing Enter in notes still adds a new line)
+                    // We'll only process Enter for textarea if there's NO "rows" attribute (meaning it's one-line)
+                    // But since your step2-notes are multiline and user may want ENTER = newline, so: do NOT advance step for Enter in textareas.
+                    return;
+                } else if (isInput || e.target.tagName === "SELECT") {
+                    e.preventDefault(); // Prevent form submit or native behavior
+                    nextStepOrSubmit();
+                }
+            });
+
+        })();
+    </script>
 
     <!-- FAQ Section -->
     <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
@@ -1047,8 +1138,35 @@
                     ].join("\n");
 
                     // Opens the user's email client with all fields pre-filled.
-                    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    window.location.href = mailto;
+                    // Submit the form via Formspree (AJAX)
+                    fetch("https://formspree.io/f/xqegqekn", {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            location,
+                            condition,
+                            notes,
+                            name,
+                            email,
+                            phone,
+                            _subject: subject
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            setStatus("Thank you! Your details have been sent successfully.");
+                            stepperForm.reset();
+                            showStep(1);
+                        } else {
+                            setStatus("There was an issue sending your form. Please try again.");
+                        }
+                    })
+                    .catch(() => {
+                        setStatus("There was an error connecting to the server. Please try again.");
+                    });
                 };
 
                 if (backBtn) {
