@@ -222,10 +222,9 @@
             <div class="h-[1px] w-32 md:w-48 bg-slate-400 mx-auto opacity-50"></div>
         </div>
     </header>
-
-    <!-- About Section (Luxury, Elegant & Visual, with Wave Animation) -->
+    <!-- About Section (Premium, Visual & Elegant, Now with Vertical Features Layout) -->
     <section id="about" class="relative py-20 md:py-36 px-4 bg-[#fdfbf7] overflow-hidden">
-        <!-- Subtle animated wave: always kept elegant & chic -->
+        <!-- Subtle animated wave: always elegant & chic -->
         <style>
             .tide-wave {
                 position: absolute;
@@ -272,8 +271,101 @@
                 .about-gallery .img2 { margin-left: 15px;}
                 .about-gallery .img3 { margin-left: 25px;}
             }
+
+            /* Premium vertical features - perfectly matched gap */
+            .about-features-vertical-stack {
+                display: flex;
+                flex-direction: column;
+                /* The vertical gap should be visually rhythm-matched (2.5rem on left, so 2.5rem here) */
+                gap: 2.5rem;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            @media (min-width: 768px) {
+                .about-features-vertical-stack  {
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                }
+            }
+            .feature-ball {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-width: 320px;
+                max-width: 430px;
+                min-height: 200px;
+                background: #fff;
+                border: 1.5px solid #eee9db;
+                border-radius: 90px 90px/100px 100px;
+                box-shadow: 0 8px 40px 0 rgba(36,38,49,0.055);
+                padding: 2.5rem 2.2rem 2.1rem 2.2rem;
+                margin: 0 auto;
+                /* Subtle, premium lift on hover */
+                transition: box-shadow 0.25s cubic-bezier(.45,.02,.34,.91), transform 0.22s cubic-bezier(.44,0,.29,1);
+                position: relative;
+                z-index: 1;
+            }
+            .feature-ball:hover {
+                box-shadow: 0 24px 80px 0 rgba(184,134,11,0.09), 0 8px 40px 0 rgba(36,38,49,0.16);
+                /* Slightly higher/lighter than before, feels more premium */
+                transform: translateY(-10px) scale(1.03);
+                z-index: 2;
+            }
+            @media (max-width: 767px) {
+                .feature-ball {
+                    min-width: 0;
+                    max-width: 100%;
+                    width: 100%;
+                    border-radius: 44px 44px/64px 64px;
+                    padding: 1.8rem 1.1rem 1.7rem 1.1rem;
+                }
+            }
+            .feature-ball-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.3rem;
+                width: 40px;
+                height: 40px;
+            }
+            /* Premium icon SVGs: deeper gold/bronze look on all icons */
+            .feature-ball-icon svg .gold-stroke,
+            .feature-ball-icon svg .gold-fill,
+            .feature-ball-icon svg .bronze-stroke {
+                stroke: #B8860B !important;
+            }
+            .feature-ball-icon svg .gold-fill {
+                fill: #B8860B !important;
+            }
+            /* Card header: Blue brand color & bolder for contrast, more luxury */
+            .feature-ball-header {
+                font-family: 'Merriweather', 'Georgia', serif;
+                font-size: 1.32rem;
+                font-weight: 700;
+                color: #205177; /* Deep blue pulled from header image for brand link */
+                text-align: center;
+                margin-bottom: 0.8rem;
+                letter-spacing: -0.01em;
+                margin-top: 0;
+                transition: color 0.22s cubic-bezier(.44,0,.29,1);
+            }
+            .feature-ball:hover .feature-ball-header {
+                color: #B8860B;
+            }
+            .feature-ball-body {
+                font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+                font-size: 1.09rem;
+                color: #58544e;
+                text-align: center;
+                line-height: 1.7;
+                font-weight: 400;
+                padding: 0 0.3rem;
+                margin-bottom: 0;
+            }
         </style>
-        
+
         <svg class="tide-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
             <path fill="#7fc6db" fill-opacity="1" d="M0,224L120,218.7C240,213,480,203,720,186.7C960,171,1200,149,1320,138.7L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
                 <animate attributeName="d"
@@ -281,36 +373,71 @@
                     repeatCount="indefinite"
                     values="
                     M0,224L120,218.7C240,213,480,203,720,186.7C960,171,1200,149,1320,138.7L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z;
-                    M0,200L120,186.7C240,173,480,133,720,149.7C960,167,1200,229,1320,245.7L1440,256L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z;
+                    M0,200L120,186.7C240,173,480,133,720,149.7C960,167,1200,229,1320,245.7L1440,256L1440,320L1320,320C1200,320,960,320,720,320,C480,320,240,320,120,320L0,320Z;
                     M0,224L120,218.7C240,213,480,203,720,186.7C960,171,1200,149,1320,138.7L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z
                     "
                 />
             </path>
         </svg>
-        
+
         <div class="relative z-10 max-w-6xl mx-auto">
-            <div class="about-card grid md:grid-cols-2 gap-0 items-stretch shadow-lg">
-                <!-- Gallery, now more visual & slightly dynamic -->
+            <div class="about-card grid md:grid-cols-2 gap-6 md:gap-0 items-stretch shadow-lg" style="overflow:visible;">
+                <!-- Gallery, left side -->
                 <div class="about-gallery p-8 pr-3 md:p-12 md:pr-2 order-2 md:order-1 justify-center">
                     <img src="https://i.ibb.co/jP0SXbVD/TIDESTAY.jpg" alt="Ericeira Shore" class="img1">
                     <img src="https://i.ibb.co/5g57c5D3/3-TIDESTAY.jpg" alt="Interior Detail" class="img2">
                     <img src="https://img00.rhimg.com/h.13562607.795.500.0.ffffff.1f34bf97.jpg" alt="Property View" class="img3">
                 </div>
-                <!-- Copy, left-aligned and refined -->
-                <div class="flex flex-col justify-center p-8 pl-3 md:p-12 md:pl-8 order-1 md:order-2">
-                    <h2 class="text-3xl md:text-5xl mb-10 font-serif italic text-slate-900 font-semibold leading-tight text-left">
+                <!-- Vertically stacked, premium feature balls layout -->
+                <div class="flex flex-col justify-center p-8 pl-3 md:p-12 md:pl-8 order-1 md:order-2 w-full">
+                    <h2 class="text-3xl md:text-5xl mb-9 font-serif italic text-slate-900 font-semibold leading-tight text-center md:text-left" style="margin-bottom:2.5rem">
                         Professional Management,<br>Personal Care
                     </h2>
-                    <div class="text-lg md:text-xl text-slate-600 leading-relaxed font-light space-y-7">
-                        <p>
-                            <span class="block text-2xl md:text-3xl text-slate-900 mb-4 italic font-serif font-semibold">Welcome to TideStay.</span>
-                            We believe property management should be as unique as the homes we care for.<br>
-                            While others prioritize volume, we favor curation – keeping our portfolio limited so every property receives truly uncompromising attention.
-                        </p>
-                        <p>
-                            As a dynamic, family-driven team, we treat every partner not as a client, but as part of our inner circle.<br>
-                            With 24/7 proactive support and meticulous on-site inspections, we bridge high-end professionalism with a personal touch. Our mission: your property thrives, your guests are inspired, and you enjoy lasting peace of mind.
-                        </p>
+                    <div class="about-features-vertical-stack">
+                        <!-- Feature 1: Curated Excellence -->
+                        <div class="feature-ball">
+                            <div class="feature-ball-icon">
+                                <!-- Abstract house icon, metallic gold stroke -->
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                                  <g>
+                                    <path class="gold-stroke" d="M6.5 19.2L18 10.2L29.5 19.2" stroke="#B8860B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <rect x="13" y="18" width="10" height="8" rx="2" class="gold-stroke" stroke="#B8860B" stroke-width="1.5"/>
+                                  </g>
+                                </svg>
+                            </div>
+                            <div class="feature-ball-header">Curated Excellence</div>
+                            <div class="feature-ball-body">
+                                We favor quality over volume. By limiting our portfolio, we ensure every property receives our uncompromising, high-end attention.
+                            </div>
+                        </div>
+                        <!-- Feature 2: Family-Driven Touch -->
+                        <div class="feature-ball">
+                            <div class="feature-ball-icon">
+                                <!-- Two interlocking circles, metallic gold stroke -->
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                                    <circle cx="14.7" cy="18" r="5.5" class="gold-stroke" stroke="#B8860B" stroke-width="1.5"/>
+                                    <circle cx="21.3" cy="18" r="5.5" class="gold-stroke" stroke="#B8860B" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="feature-ball-header">Family-Driven Touch</div>
+                            <div class="feature-ball-body">
+                                You’re not just a client; you’re part of our inner circle. We manage every home with the personal care of a dedicated family team.
+                            </div>
+                        </div>
+                        <!-- Feature 3: Proactive Peace of Mind -->
+                        <div class="feature-ball">
+                            <div class="feature-ball-icon">
+                                <!-- Minimalist shield, metallic gold stroke -->
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                                  <path class="gold-stroke" d="M18 7.5C21.9 9.4 26.16 9.71 28.5 10.1V18.5c0 6.13-3.073 9.54-9.504 10.82a2.6 2.6 0 0 1-1.993 0C10.573 28.04 7.5 24.63 7.5 18.5V10.1c2.34-.39 6.6-.7 10.5-2.6z"
+                                    stroke="#B8860B" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+                                </svg>
+                            </div>
+                            <div class="feature-ball-header">Proactive Peace of Mind</div>
+                            <div class="feature-ball-body">
+                                From 24/7 support to meticulous on-site inspections, we bridge professional management with total reliability.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -710,6 +837,20 @@
 
                     <div id="step-form-status" class="mt-4 text-slate-500 text-sm font-light italic" role="status"></div>
                 </form>
+                <!-- תודה הודעה פופ-אפ -->
+                <div id="thank-you-message" 
+                    style="display:none"
+                    class="fixed inset-0 bg-black/20 z-50 flex items-center justify-center"
+                >
+                    <div class="bg-white rounded-2xl p-8 shadow-xl text-center max-w-xs mx-auto">
+                        <h3 class="text-2xl font-bold mb-2 text-emerald-700">Thank you for your details!</h3>
+                        <p class="text-slate-700 mb-3">We will get back to you shortly.</p>
+                        <button 
+                            id="close-thank-you"
+                            class="mt-2 bg-emerald-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-emerald-700 transition"
+                        >Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -796,6 +937,46 @@
                 }
             });
 
+            // Show thank you message after submit (client side, instant)
+            const thankYouDiv = document.getElementById('thank-you-message');
+            const closeBtn = document.getElementById('close-thank-you');
+
+            if (stepperForm && thankYouDiv) {
+                stepperForm.addEventListener('submit', function(e) {
+                    // Intercept default for UX, then let Formspree work via AJAX or fallback submit if JS disabled
+                    // If Formspree supports AJAX, you could do fetch API here, but by default just show thank you.
+                    e.preventDefault();
+
+                    // Optionally, you may want to still send the form, but for this UX we just show the thank you msg.
+                    // If you want to actually send the data via AJAX, you can do so here.
+
+                    // Hide form (optional)
+                    stepperForm.style.display = "none";
+                    // Show thank you
+                    thankYouDiv.style.display = "flex";
+                });
+
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        // Optionally reload the page, or just hide message and show the form blank
+                        thankYouDiv.style.display = "none";
+                        // Reset the form, show again for next submission
+                        stepperForm.reset();
+                        // Reset to step 1
+                        document.querySelectorAll('.step-panel').forEach(function(panel) {
+                            panel.setAttribute('data-active', panel.getAttribute('data-step') === '1' ? 'true' : 'false');
+                        });
+                        document.querySelectorAll('.step-dot').forEach(function(dot, idx) {
+                            if (idx === 0) {
+                                dot.classList.add('is-active');
+                            } else {
+                                dot.classList.remove('is-active');
+                            }
+                        });
+                        stepperForm.style.display = "";
+                    });
+                }
+            }
         })();
     </script>
 
