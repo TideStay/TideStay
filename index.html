@@ -847,7 +847,7 @@
                         <button 
                             id="close-thank-you"
                             class="mt-2 bg-emerald-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-emerald-700 transition"
-                        >Close</button>
+                        >OK</button>
                     </div>
                 </div>
             </div>
@@ -869,16 +869,27 @@
                 const activePanel = stepperForm.querySelector('.step-panel[data-active="true"]');
                 if (!activePanel) return;
                 const step = parseInt(activePanel.getAttribute('data-step'), 10);
+
                 // Only show "Send Request" on final step; show "Next" otherwise.
                 if (step === 3) {
                     stepNextBtn.style.display = "none";
                     stepSubmitBtn.style.display = "";
                 } else {
-                    stepSubmitBtn.style.display = "none";
                     stepNextBtn.style.display = "";
+                    stepSubmitBtn.style.display = "none";
+                    // Always ensure button text is "Next"
+                    stepNextBtn.textContent = "Next";
                 }
-                // "Back" is disabled on step 1
-                stepBackBtn.disabled = step === 1;
+                // On Step 1, hide "Back" button (visibility: hidden); else show
+                if (step === 1) {
+                    stepBackBtn.style.visibility = "hidden";
+                    stepBackBtn.style.opacity = "0";
+                    stepBackBtn.disabled = true; // For safety, still disable it
+                } else {
+                    stepBackBtn.style.visibility = "";
+                    stepBackBtn.style.opacity = "1";
+                    stepBackBtn.disabled = false;
+                }
             }
 
             // Utility: Get current active step number (1-based)
@@ -914,9 +925,10 @@
             // Move to a specific step (1, 2, 3)
             function goToStep(stepNum) {
                 stepPanels.forEach(panel => {
-                    panel.setAttribute('data-active',
-                        parseInt(panel.getAttribute('data-step'), 10) === stepNum ? 'true' : 'false'
-                    );
+                    const isActive = parseInt(panel.getAttribute('data-step'), 10) === stepNum;
+                    panel.setAttribute('data-active', isActive ? 'true' : 'false');
+                    // Fix: Hide all inactive panels, show only active
+                    panel.style.display = isActive ? "" : "none";
                 });
                 // Step dots styling
                 document.querySelectorAll('.step-dot').forEach((dot, idx) => {
@@ -995,17 +1007,35 @@
 
                 if (closeBtn) {
                     closeBtn.addEventListener('click', function() {
+                        // Hide modal completely
                         thankYouDiv.style.display = "none";
+                        // Reset form fields
                         stepperForm.reset();
-                        // Reset steps and dots
-                        goToStep(1);
+                        // Reset panels hiding (in case user uses browser Back etc)
+                        stepPanels.forEach((panel, idx) => {
+                            if (idx === 0) {
+                                panel.style.display = "";
+                                panel.setAttribute('data-active', "true");
+                            } else {
+                                panel.style.display = "none";
+                                panel.setAttribute('data-active', "false");
+                            }
+                        });
+                        // Reset stepper to first step and correct button display
+                        goToStep(1); // This will also call updateStepButtons
+                        // Make form interactive again and restore clean layout
+                        // Fix: Use "flex" for form if it started with "flex", else ""
+                        // Here, the form should display as ""/block for normal flow
                         stepperForm.style.display = "";
+                        // Remove invalid styles/messages if any
+                        const status = document.getElementById('step-form-status');
+                        if(status) status.textContent = "";
                     });
                 }
             }
 
-            // Initial update on DOM ready
-            updateStepButtons();
+            // Initial update on DOM ready -- ensures layout starts properly
+            goToStep(1); // also ensures buttons/dots are correct on snapshot load
         })();
     </script>
 
@@ -1316,7 +1346,7 @@
                     updateDots();
 
                     if (backBtn) backBtn.disabled = stepNum === 1;
-                    if (nextBtn) nextBtn.textContent = stepNum === 2 ? "Review" : "Next";
+                    if (nextBtn) nextBtn.textContent = stepNum === 2 ? "Next" : "Next";
                     setStatus(stepNum === 3 ? "Ready when you are. Send your details." : "");
                 };
 
