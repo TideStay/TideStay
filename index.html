@@ -688,7 +688,6 @@
                     Tell us where your property is and we will get back to you.
                 </p>
             </div>
-
             <div class="luxury-card p-6 md:p-10 rounded-[2rem]">
                 <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8">
                     <div class="flex items-center gap-3">
@@ -815,8 +814,8 @@
                         >
                             Back
                         </button>
-
                         <div class="flex gap-3">
+                            <!-- The Next and Submit buttons are shown/hidden by script based on active step -->
                             <button
                                 id="step-next"
                                 type="button"
@@ -824,10 +823,10 @@
                             >
                                 Next
                             </button>
-
                             <button
                                 id="step-submit"
                                 type="submit"
+                                style="display:none"
                                 class="whatsapp-btn text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-[1.02] transition transform inline-flex items-center justify-center"
                             >
                                 Send Request
@@ -855,10 +854,32 @@
         </div>
     </section>
     <script>
-        // Add ENTER key navigation for property-stepper
+        // Add ENTER key navigation for property-stepper and button show/hide
         (function() {
             const stepperForm = document.getElementById('property-stepper');
             if (!stepperForm) return;
+
+            const stepNextBtn = document.getElementById('step-next');
+            const stepSubmitBtn = document.getElementById('step-submit');
+            const stepPanels = stepperForm.querySelectorAll('.step-panel');
+            const stepBackBtn = document.getElementById('step-back');
+
+            // Show/hide correct buttons for current step
+            function updateStepButtons() {
+                const activePanel = stepperForm.querySelector('.step-panel[data-active="true"]');
+                if (!activePanel) return;
+                const step = parseInt(activePanel.getAttribute('data-step'), 10);
+                // Only show "Send Request" on final step; show "Next" otherwise.
+                if (step === 3) {
+                    stepNextBtn.style.display = "none";
+                    stepSubmitBtn.style.display = "";
+                } else {
+                    stepSubmitBtn.style.display = "none";
+                    stepNextBtn.style.display = "";
+                }
+                // "Back" is disabled on step 1
+                stepBackBtn.disabled = step === 1;
+            }
 
             // Utility: Get current active step number (1-based)
             function getCurrentStep() {
@@ -869,7 +890,6 @@
 
             // Utility: Validate the current step (should match existing JS)
             function validateStep(stepNum) {
-                // Grab inputs as in the main JS
                 if (stepNum === 1) {
                     const loc = document.getElementById("step1-location");
                     return loc && loc.value.trim().length > 0;
@@ -891,6 +911,24 @@
                 return false;
             }
 
+            // Move to a specific step (1, 2, 3)
+            function goToStep(stepNum) {
+                stepPanels.forEach(panel => {
+                    panel.setAttribute('data-active',
+                        parseInt(panel.getAttribute('data-step'), 10) === stepNum ? 'true' : 'false'
+                    );
+                });
+                // Step dots styling
+                document.querySelectorAll('.step-dot').forEach((dot, idx) => {
+                    if (idx === (stepNum - 1)) {
+                        dot.classList.add('is-active');
+                    } else {
+                        dot.classList.remove('is-active');
+                    }
+                });
+                updateStepButtons();
+            }
+
             // Utility: Move to next step or submit
             function nextStepOrSubmit() {
                 const current = getCurrentStep();
@@ -898,42 +936,49 @@
                 if (!validateStep(current)) return false;
                 // Steps 1,2 move next, Step 3 submits
                 if (current < 3) {
-                    // Trigger Next button click
-                    const nextBtn = document.getElementById("step-next");
-                    if (nextBtn) nextBtn.click();
+                    goToStep(current + 1);
                 } else if (current === 3) {
                     // Let the form naturally submit (to Formspree)
-                    // Do not open mailto, just let browser submit
                     stepperForm.requestSubmit ? stepperForm.requestSubmit() : stepperForm.submit();
                 }
                 return true;
             }
 
             // Listen for ENTER on all relevant fields
-            // On inputs/selects within visible active panel, ENTER triggers next/submit
             stepperForm.addEventListener("keydown", function(e) {
-                // Only act on Enter key (not Shift+Enter etc)
                 if (
                     e.key !== "Enter" ||
                     e.defaultPrevented
                 ) return;
 
-                // Only run if "active step" panel is visible
                 let isInput = e.target.tagName === "INPUT" || e.target.tagName === "SELECT";
                 let isTextarea = e.target.tagName === "TEXTAREA";
 
-                // CTRL/ALT/SHIFT+Enter should NOT progress step/submit
                 if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) return;
 
-                // Special-case textareas: only move to next if not multiline (prevent line break)
+                // Only handle Enter for input/select, but NOT for textarea (let user enter newlines)
                 if (isTextarea) {
-                    // Prevent default only if textarea is NOT multiline (so pressing Enter in notes still adds a new line)
-                    // We'll only process Enter for textarea if there's NO "rows" attribute (meaning it's one-line)
-                    // But since your step2-notes are multiline and user may want ENTER = newline, so: do NOT advance step for Enter in textareas.
                     return;
                 } else if (isInput || e.target.tagName === "SELECT") {
-                    e.preventDefault(); // Prevent form submit or native behavior
+                    e.preventDefault();
                     nextStepOrSubmit();
+                }
+            });
+
+            // Stepper navigation: Next
+            stepNextBtn.addEventListener("click", function() {
+                const current = getCurrentStep();
+                if (!validateStep(current)) return;
+                if (current < 3) {
+                    goToStep(current + 1);
+                }
+            });
+
+            // Stepper navigation: Back
+            stepBackBtn.addEventListener("click", function() {
+                const current = getCurrentStep();
+                if (current > 1) {
+                    goToStep(current - 1);
                 }
             });
 
@@ -943,40 +988,24 @@
 
             if (stepperForm && thankYouDiv) {
                 stepperForm.addEventListener('submit', function(e) {
-                    // Intercept default for UX, then let Formspree work via AJAX or fallback submit if JS disabled
-                    // If Formspree supports AJAX, you could do fetch API here, but by default just show thank you.
                     e.preventDefault();
-
-                    // Optionally, you may want to still send the form, but for this UX we just show the thank you msg.
-                    // If you want to actually send the data via AJAX, you can do so here.
-
-                    // Hide form (optional)
                     stepperForm.style.display = "none";
-                    // Show thank you
                     thankYouDiv.style.display = "flex";
                 });
 
                 if (closeBtn) {
                     closeBtn.addEventListener('click', function() {
-                        // Optionally reload the page, or just hide message and show the form blank
                         thankYouDiv.style.display = "none";
-                        // Reset the form, show again for next submission
                         stepperForm.reset();
-                        // Reset to step 1
-                        document.querySelectorAll('.step-panel').forEach(function(panel) {
-                            panel.setAttribute('data-active', panel.getAttribute('data-step') === '1' ? 'true' : 'false');
-                        });
-                        document.querySelectorAll('.step-dot').forEach(function(dot, idx) {
-                            if (idx === 0) {
-                                dot.classList.add('is-active');
-                            } else {
-                                dot.classList.remove('is-active');
-                            }
-                        });
+                        // Reset steps and dots
+                        goToStep(1);
                         stepperForm.style.display = "";
                     });
                 }
             }
+
+            // Initial update on DOM ready
+            updateStepButtons();
         })();
     </script>
 
