@@ -209,7 +209,11 @@
     </style>
 </head>
 <body class="text-slate-800 overflow-x-hidden">
-
+    <div class="fixed top-6 right-6 md:top-8 md:right-8 z-[100]">
+        <button id="lang-toggle" class="bg-white/80 backdrop-blur-md border border-slate-200 text-slate-800 px-4 py-2 rounded-full font-bold shadow-sm hover:shadow-md transition text-sm tracking-wide">
+            PT
+        </button>
+    </div>
     <!-- Hero Section -->
     <header class="hero-bg min-h-screen flex items-center justify-center text-center px-6">
         <div class="max-w-5xl animate-fade-up">
@@ -217,8 +221,8 @@
             <img src="https://i.ibb.co/NdzGpGDn/TIDE-LOGO-WEB-01.png" alt="TideStay Logo" class="brand-logo">
             
             <!-- הקטנתי את הגודל מ-text-7xl/text-9xl ל-text-6xl/text-8xl -->
-            <h1 class="text-6xl md:text-8xl text-slate-900 mb-6 tracking-tight">TideStay Ericeira</h1>
-            <p class="text-sm md:text-xl tracking-[0.3em] md:tracking-[0.4em] uppercase text-slate-700 mb-10 font-light italic">Boutique Property Management</p>
+            <h1 class="text-6xl md:text-8xl text-slate-900 mb-6 tracking-tight" data-i18n="hero_title">TideStay Ericeira</h1>
+            <p class="text-sm md:text-xl tracking-[0.3em] md:tracking-[0.4em] uppercase text-slate-700 mb-10 font-light italic" data-i18n="hero_subtitle">Boutique Property Management</p>
             <div class="h-[1px] w-32 md:w-48 bg-slate-400 mx-auto opacity-50"></div>
         </div>
     </header>
@@ -390,7 +394,7 @@
                 </div>
                 <!-- Vertically stacked, premium feature balls layout -->
                 <div class="flex flex-col justify-center p-8 pl-3 md:p-12 md:pl-8 order-1 md:order-2 w-full">
-                    <h2 class="text-3xl md:text-5xl mb-9 font-serif italic text-slate-900 font-semibold leading-tight text-center md:text-left" style="margin-bottom:2.5rem">
+                    <h2 class="text-3xl md:text-5xl mb-9 font-serif italic text-slate-900 font-semibold leading-tight text-center md:text-left" style="margin-bottom:2.5rem" data-i18n="about_title">
                         Professional Management,<br>Personal Care
                     </h2>
                     <div class="about-features-vertical-stack">
@@ -405,8 +409,8 @@
                                   </g>
                                 </svg>
                             </div>
-                            <div class="feature-ball-header">Curated Excellence</div>
-                            <div class="feature-ball-body">
+                            <div class="feature-ball-header" data-i18n="feature1_title">Curated Excellence</div>
+                            <div class="feature-ball-body" data-i18n="feature1_desc">
                                 We favor quality over volume. By limiting our portfolio, we ensure every property receives our uncompromising, high-end attention.
                             </div>
                         </div>
@@ -419,8 +423,8 @@
                                     <circle cx="21.3" cy="18" r="5.5" class="gold-stroke" stroke="#B8860B" stroke-width="1.5"/>
                                 </svg>
                             </div>
-                            <div class="feature-ball-header">Family-Driven Touch</div>
-                            <div class="feature-ball-body">
+                            <div class="feature-ball-header" data-i18n="feature2_title">Family-Driven Touch</div>
+                            <div class="feature-ball-body" data-i18n="feature2_desc">
                                 You’re not just a client; you’re part of our inner circle. We manage every home with the personal care of a dedicated family team.
                             </div>
                         </div>
@@ -433,8 +437,8 @@
                                     stroke="#B8860B" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
                                 </svg>
                             </div>
-                            <div class="feature-ball-header">Proactive Peace of Mind</div>
-                            <div class="feature-ball-body">
+                            <div class="feature-ball-header" data-i18n="feature3_title">Proactive Peace of Mind</div>
+                            <div class="feature-ball-body" data-i18n="feature3_desc">
                                 From 24/7 support to meticulous on-site inspections, we bridge professional management with total reliability.
                             </div>
                         </div>
@@ -464,73 +468,120 @@
         }
       </style>
       <div class="max-w-7xl mx-auto text-center mb-20">
-        <h2 class="text-4xl md:text-6xl italic text-slate-900 font-serif">Our Plans</h2>
-        <p class="text-slate-500 mt-6 font-light italic text-lg md:text-2xl">Tailored to fit your needs, finalized together.</p>
+        <h2 class="text-4xl md:text-6xl italic text-slate-900 font-serif" data-i18n="plans_title">Our Plans</h2>
+        <p class="text-slate-500 mt-6 font-light italic text-lg md:text-2xl" data-i18n="plans_subtitle">Tailored to fit your needs, finalized together.</p>
       </div>
       <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 md:gap-10 items-stretch">
 
         <!-- Smart Plan -->
         <div class="plan-card bg-white p-8 md:p-12 rounded-3xl flex flex-col border border-slate-200 relative">
-          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight">Smart</h3>
-          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold">Efficient • Digital • High-Yield</p>
+          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight" data-i18n="plan1_title">Smart</h3>
+          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold" data-i18n="plan1_tags">Efficient • Digital • High-Yield</p>
           <div class="text-5xl md:text-6xl font-light mb-10 text-slate-800">
             15%
-            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold">Management Fee</span>
+            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold" data-i18n="mgmt_fee">Management Fee</span>
           </div>
           <ul class="space-y-5 text-slate-600 font-light text-sm border-t border-slate-100 pt-10 flex-grow text-left list-disc list-inside">
-            <li><b class="text-slate-800">Professional Listing:</b> Full optimization on Airbnb & Booking.com.</li>
-            <li><b class="text-slate-800">Dynamic Pricing:</b> AI-driven daily price adjustments.</li>
-            <li><b class="text-slate-800">24/7 Guest Support:</b> We handle all inquiries and relations.</li>
-            <li><b class="text-slate-800">Seamless Self Check-in:</b> Digital arrival guides & smart-lock.</li>
-            <li><b class="text-slate-800">Cleaning Coordination:</b> Professional automated scheduling.</li>
-            <li><b class="text-slate-800">Legal Compliance:</b> SEF reporting and Tourist Tax.</li>
+            <li>
+              <b class="text-slate-800" data-i18n="p1_li1_b">Professional Listing:</b>
+              <span data-i18n="p1_li1_t"> Full optimization on Airbnb & Booking.com.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p1_li2_b">Dynamic Pricing:</b>
+              <span data-i18n="p1_li2_t"> AI-driven daily price adjustments.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p1_li3_b">24/7 Guest Support:</b>
+              <span data-i18n="p1_li3_t"> We handle all inquiries and relations.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p1_li4_b">Seamless Self Check-in:</b>
+              <span data-i18n="p1_li4_t"> Digital arrival guides & smart-lock.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p1_li5_b">Cleaning Coordination:</b>
+              <span data-i18n="p1_li5_t"> Professional automated scheduling.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p1_li6_b">Legal Compliance:</b>
+              <span data-i18n="p1_li6_t"> SEF reporting and Tourist Tax.</span>
+            </li>
           </ul>
         </div>
 
         <!-- Popular Plan -->
         <div class="plan-card bg-white p-9 md:p-14 rounded-3xl flex flex-col border border-slate-200 relative shadow-xl ring-1 ring-slate-100 z-10">
           <div class="absolute left-1/2 -translate-x-1/2 -top-5">
-            <span class="bg-slate-100 text-blue-700 px-6 py-[6px] rounded-full text-xs uppercase font-semibold tracking-wide shadow-md" style="font-size:11px">The Personal Choice</span>
+            <span class="bg-slate-100 text-blue-700 px-6 py-[6px] rounded-full text-xs uppercase font-semibold tracking-wide shadow-md" style="font-size:11px" data-i18n="plan2_badge">The Personal Choice</span>
           </div>
-          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight">Popular</h3>
-          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold">Hands-On • Professional • Stress-Free</p>
+          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight" data-i18n="plan2_title">Popular</h3>
+          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold" data-i18n="plan2_tags">Hands-On • Professional • Stress-Free</p>
           <div class="text-5xl md:text-6xl font-light mb-10 text-slate-800">
             20%
-            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold">Management Fee</span>
+            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold" data-i18n="mgmt_fee">Management Fee</span>
           </div>
-          <p class="font-bold text-slate-800 italic mb-5 text-sm text-left">Everything in Smart, plus:</p>
+          <p class="font-bold text-slate-800 italic mb-5 text-sm text-left" data-i18n="everything_smart">Everything in Smart, plus:</p>
           <ul class="space-y-5 text-slate-700 font-light text-sm border-t border-slate-100 pt-8 flex-grow text-left list-disc list-inside ">
-            <li><b class="text-slate-800">Personal Welcome:</b> In-person check-in for a boutique touch.</li>
-            <li><b class="text-slate-800">Quality Inspections:</b> We physically verify every cleaning.</li>
-            <li><b class="text-slate-800">Linen & Laundry:</b> Management of hotel-grade linens.</li>
-            <li><b class="text-slate-800">On-Site Support:</b> Handling minor repairs and technical issues.</li>
-            <li><b class="text-slate-800">Local Welcome Gift:</b> Curated treats for 5-star reviews.</li>
+            <li>
+              <b class="text-slate-800" data-i18n="p2_li1_b">Personal Welcome:</b>
+              <span data-i18n="p2_li1_t"> In-person check-in for a boutique touch.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p2_li2_b">Quality Inspections:</b>
+              <span data-i18n="p2_li2_t"> We physically verify every cleaning.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p2_li3_b">Linen & Laundry:</b>
+              <span data-i18n="p2_li3_t"> Management of hotel-grade linens.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p2_li4_b">On-Site Support:</b>
+              <span data-i18n="p2_li4_t"> Handling minor repairs and technical issues.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p2_li5_b">Local Welcome Gift:</b>
+              <span data-i18n="p2_li5_t"> Curated treats for 5-star reviews.</span>
+            </li>
           </ul>
         </div>
 
         <!-- Plus Plan -->
         <div class="plan-card bg-white p-8 md:p-12 rounded-3xl flex flex-col border border-slate-200 relative">
-          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight">Plus</h3>
-          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold">Total Peace • Premium Care</p>
+          <h3 class="text-2xl md:text-3xl mb-2 font-serif italic text-slate-900 tracking-tight" data-i18n="plan3_title">Plus</h3>
+          <p class="text-slate-500 text-xs mb-8 uppercase tracking-widest font-semibold" data-i18n="plan3_tags">Total Peace • Premium Care</p>
           <div class="text-5xl md:text-6xl font-light mb-10 text-slate-800">25%
-            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold">Management Fee</span>
+            <span class="text-[11px] uppercase tracking-wide text-slate-400 block mt-3 font-sans font-bold" data-i18n="mgmt_fee">Management Fee</span>
           </div>
-          <p class="font-bold text-slate-800 italic mb-5 text-sm text-left">Everything in Popular, plus:</p>
+          <p class="font-bold text-slate-800 italic mb-5 text-sm text-left" data-i18n="everything_popular">Everything in Popular, plus:</p>
           <ul class="space-y-5 text-slate-600 font-light text-sm border-t border-slate-100 pt-8 flex-grow text-left list-disc list-inside">
-            <li><b class="text-slate-800">Weekly Inspections:</b> Essential for the coastal climate.</li>
-            <li><b class="text-slate-800">Utility Management:</b> We handle all bills (Water, Elec, Net).</li>
-            <li><b class="text-slate-800">Ericeira Concierge:</b> Booking surfing, transfers, and dining.</li>
-            <li><b class="text-slate-800">Interior Styling:</b> Professional seasonal decor updates.</li>
-            <li><b class="text-slate-800">Performance Analytics:</b> Monthly financial deep-dives.</li>
+            <li>
+              <b class="text-slate-800" data-i18n="p3_li1_b">Weekly Inspections:</b>
+              <span data-i18n="p3_li1_t"> Essential for the coastal climate.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p3_li2_b">Utility Management:</b>
+              <span data-i18n="p3_li2_t"> We handle all bills (Water, Elec, Net).</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p3_li3_b">Ericeira Concierge:</b>
+              <span data-i18n="p3_li3_t"> Booking surfing, transfers, and dining.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p3_li4_b">Interior Styling:</b>
+              <span data-i18n="p3_li4_t"> Professional seasonal decor updates.</span>
+            </li>
+            <li>
+              <b class="text-slate-800" data-i18n="p3_li5_b">Performance Analytics:</b>
+              <span data-i18n="p3_li5_t"> Monthly financial deep-dives.</span>
+            </li>
           </ul>
         </div>
       </div>
     </section>
-
     <!-- Testimonials -->
     <section class="py-20 md:py-32 px-6 bg-[#fdfbf7]">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-6xl italic text-slate-900 text-center mb-20">What Our Partners Say</h2>
+            <h2 class="text-4xl md:text-6xl italic text-slate-900 text-center mb-20" data-i18n="test_title">What Our Partners Say</h2>
             <div class="grid md:grid-cols-3 gap-8 md:gap-10">
                 
                 <div class="testimonial-card p-10 rounded-r-2xl italic relative flex flex-col justify-between">
@@ -577,8 +628,8 @@
     <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-4xl md:text-6xl italic text-slate-900">Check Your Profitability</h2>
-                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl">
+                <h2 class="text-4xl md:text-6xl italic text-slate-900" data-i18n="roi_title">Check Your Profitability</h2>
+                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl" data-i18n="roi_subtitle">
                     Use this quick estimate to understand the profitability potential before choosing TideStay for long-term or short-term management.
                 </p>
             </div>
@@ -588,7 +639,7 @@
                     <div>
                         <div class="space-y-5">
                             <label class="block">
-                                <span class="text-slate-700 font-semibold text-sm">Purchase Price (€)</span>
+                                <span class="text-slate-700 font-semibold text-sm" data-i18n="roi_purchase_label">Purchase Price (€)</span>
                                 <input
                                     id="roi-purchase"
                                     type="number"
@@ -596,12 +647,13 @@
                                     min="0"
                                     step="0.01"
                                     placeholder="e.g. 250000"
+                                    data-i18n="roi_purchase_ph"
                                     class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                 />
                             </label>
 
                             <label class="block">
-                                <span class="text-slate-700 font-semibold text-sm">Renovation Costs (€)</span>
+                                <span class="text-slate-700 font-semibold text-sm" data-i18n="roi_renov_label">Renovation Costs (€)</span>
                                 <input
                                     id="roi-renovation"
                                     type="number"
@@ -609,12 +661,13 @@
                                     min="0"
                                     step="0.01"
                                     placeholder="e.g. 30000"
+                                    data-i18n="roi_renov_ph"
                                     class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                 />
                             </label>
 
                             <label class="block">
-                                <span class="text-slate-700 font-semibold text-sm">Expected Monthly Rent (€)</span>
+                                <span class="text-slate-700 font-semibold text-sm" data-i18n="roi_rent_label">Expected Monthly Rent (€)</span>
                                 <input
                                     id="roi-rent"
                                     type="number"
@@ -622,6 +675,7 @@
                                     min="0"
                                     step="0.01"
                                     placeholder="e.g. 3500"
+                                    data-i18n="roi_rent_ph"
                                     class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                 />
                             </label>
@@ -632,10 +686,11 @@
                                 type="button"
                                 id="roi-calc"
                                 class="whatsapp-btn text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-[1.02] transition transform inline-flex items-center justify-center"
+                                data-i18n="roi_btn"
                             >
                                 Calculate ROI
                             </button>
-                            <div class="text-slate-500 text-sm font-light italic">
+                            <div class="text-slate-500 text-sm font-light italic" data-i18n="roi_note">
                                 We subtract 200€ fixed costs/month + 20% management fee.
                             </div>
                         </div>
@@ -644,12 +699,12 @@
                     <div class="rounded-2xl border border-slate-100 bg-white/60 p-6 md:p-8">
                         <div class="flex items-center gap-3 mb-6">
                             <div class="h-2.5 w-2.5 rounded-full bg-emerald-500"></div>
-                            <div class="text-slate-900 font-semibold text-lg">Your Results</div>
+                            <div class="text-slate-900 font-semibold text-lg" data-i18n="roi_results_title">Your Results</div>
                         </div>
 
                         <div class="space-y-6">
                             <div>
-                                <div class="text-slate-500 text-sm font-semibold uppercase tracking-widest">
+                                <div class="text-slate-500 text-sm font-semibold uppercase tracking-widest" data-i18n="roi_annual_label">
                                     Annual Net Profit
                                 </div>
                                 <div id="roi-annual-net" class="text-4xl md:text-5xl text-slate-900 font-light mt-2">
@@ -669,7 +724,7 @@
                                 </div>
                             </div>
 
-                            <div id="roi-hint" class="text-slate-500 text-sm font-light italic leading-relaxed">
+                            <div id="roi-hint" class="text-slate-500 text-sm font-light italic leading-relaxed" data-i18n="roi_hint">
                                 Enter the numbers to see an estimate.
                             </div>
                         </div>
@@ -683,8 +738,8 @@
     <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-4xl md:text-6xl italic text-slate-900">Property Inquiry</h2>
-                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl">
+                <h2 class="text-4xl md:text-6xl italic text-slate-900" data-i18n="form_title">Property Inquiry</h2>
+                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl" data-i18n="form_subtitle">
                     Tell us where your property is and we will get back to you.
                 </p>
             </div>
@@ -692,15 +747,15 @@
                 <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8">
                     <div class="flex items-center gap-3">
                         <span id="step-dot-1" class="step-dot is-active"></span>
-                        <span class="text-slate-900 font-semibold text-sm md:text-base">1. Location</span>
+                        <span class="text-slate-900 font-semibold text-sm md:text-base" data-i18n="step1_tab">1. Location</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span id="step-dot-2" class="step-dot"></span>
-                        <span class="text-slate-900 font-semibold text-sm md:text-base">2. Condition</span>
+                        <span class="text-slate-900 font-semibold text-sm md:text-base" data-i18n="step2_tab">2. Condition</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span id="step-dot-3" class="step-dot"></span>
-                        <span class="text-slate-900 font-semibold text-sm md:text-base">3. Contact</span>
+                        <span class="text-slate-900 font-semibold text-sm md:text-base" data-i18n="step3_tab">3. Contact</span>
                     </div>
                 </div>
 
@@ -710,17 +765,18 @@
                         <div id="step-panel-1" class="step-panel" data-step="1" data-active="true">
                             <div class="space-y-5 max-w-xl">
                                 <label class="block">
-                                    <span class="text-slate-700 font-semibold text-sm">1) Where is the property located?</span>
+                                    <span class="text-slate-700 font-semibold text-sm" data-i18n="step1_label">1) Where is the property located?</span>
                                     <input
                                         id="step1-location"
                                         name="location"
                                         type="text"
                                         required
                                         placeholder="e.g. Ericeira / São Sebastião / near Lisbon"
+                                        data-i18n="step1_ph"
                                         class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                     />
                                 </label>
-                                <div class="text-slate-500 text-sm font-light italic">
+                                <div class="text-slate-500 text-sm font-light italic" data-i18n="step1_hint">
                                     You can write city, neighborhood, or approximate area.
                                 </div>
                             </div>
@@ -730,29 +786,30 @@
                         <div id="step-panel-2" class="step-panel" data-step="2" data-active="false">
                             <div class="space-y-5 max-w-xl">
                                 <label class="block">
-                                    <span class="text-slate-700 font-semibold text-sm">2) What is the property condition?</span>
+                                    <span class="text-slate-700 font-semibold text-sm" data-i18n="step2_label">2) What is the property condition?</span>
                                     <select
                                         id="step2-condition"
                                         name="status"
                                         required
                                         class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                     >
-                                        <option value="" selected disabled>Select one</option>
-                                        <option value="Renovated">Renovated / Updated</option>
-                                        <option value="New">New / Recently refurbished</option>
-                                        <option value="Older-ready">Older but ready for rentals</option>
-                                        <option value="In-progress">In progress</option>
-                                        <option value="Not-sure">Not sure yet</option>
+                                        <option value="" selected disabled data-i18n="step2_opt1">Select one</option>
+                                        <option value="Renovated" data-i18n="step2_opt2">Renovated / Updated</option>
+                                        <option value="New" data-i18n="step2_opt3">New / Recently refurbished</option>
+                                        <option value="Older-ready" data-i18n="step2_opt4">Older but ready for rentals</option>
+                                        <option value="In-progress" data-i18n="step2_opt5">In progress</option>
+                                        <option value="Not-sure" data-i18n="step2_opt6">Not sure yet</option>
                                     </select>
                                 </label>
 
                                 <label class="block">
-                                    <span class="text-slate-700 font-semibold text-sm">Optional notes</span>
+                                    <span class="text-slate-700 font-semibold text-sm" data-i18n="step2_notes_label">Optional notes</span>
                                     <textarea
                                         id="step2-notes"
                                         name="notes"
                                         rows="3"
                                         placeholder="Any details that could help us advise you (size, upgrades, timeline...)"
+                                        data-i18n="step2_notes_ph"
                                         class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300 resize-none"
                                     ></textarea>
                                 </label>
@@ -763,31 +820,33 @@
                         <div id="step-panel-3" class="step-panel" data-step="3" data-active="false">
                             <div class="space-y-5 max-w-xl">
                                 <label class="block">
-                                    <span class="text-slate-700 font-semibold text-sm">3) Your name</span>
+                                    <span class="text-slate-700 font-semibold text-sm" data-i18n="step3_name_label">3) Your name</span>
                                     <input
                                         id="step3-name"
                                         name="full-name"
                                         type="text"
                                         required
                                         placeholder="Full name"
+                                        data-i18n="step3_name_ph"
                                         class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                     />
                                 </label>
 
                                 <label class="block">
-                                    <span class="text-slate-700 font-semibold text-sm">Email</span>
+                                    <span class="text-slate-700 font-semibold text-sm" data-i18n="step3_email_label">Email</span>
                                     <input
                                         id="step3-email"
                                         name="email"
                                         type="email"
                                         required
                                         placeholder="name@example.com"
+                                        data-i18n="step3_email_ph"
                                         class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
                                     />
                                 </label>
 
                                 <label class="block">
-                                    <span class="text-slate-700 font-semibold text-sm">Phone / WhatsApp</span>
+                                    <span class="text-slate-700 font-semibold text-sm" data-i18n="step3_phone_label">Phone / WhatsApp</span>
                                     <input
                                         id="step3-phone"
                                         name="phone"
@@ -799,7 +858,7 @@
                                     />
                                 </label>
 
-                                <div class="text-slate-500 text-sm font-light italic">
+                                <div class="text-slate-500 text-sm font-light italic" data-i18n="step3_hint">
                                     After you press Send, we will receive your inquiry and get back to you shortly.
                                 </div>
                             </div>
@@ -811,6 +870,7 @@
                             id="step-back"
                             type="button"
                             class="rounded-full border border-slate-200 bg-white/70 px-8 py-4 text-lg font-bold text-slate-800 hover:bg-white transition disabled:opacity-50 disabled:cursor-not-allowed"
+                            data-i18n="btn_back"
                         >
                             Back
                         </button>
@@ -820,6 +880,7 @@
                                 id="step-next"
                                 type="button"
                                 class="rounded-full border border-slate-200 bg-white px-8 py-4 text-lg font-bold text-slate-800 hover:bg-white/80 transition"
+                                data-i18n="btn_next"
                             >
                                 Next
                             </button>
@@ -828,6 +889,7 @@
                                 type="submit"
                                 style="display:none"
                                 class="whatsapp-btn text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-[1.02] transition transform inline-flex items-center justify-center"
+                                data-i18n="btn_send"
                             >
                                 Send Request
                             </button>
@@ -842,11 +904,12 @@
                     class="fixed inset-0 bg-black/20 z-50 flex items-center justify-center"
                 >
                     <div class="bg-white rounded-2xl p-8 shadow-xl text-center max-w-xs mx-auto">
-                        <h3 class="text-2xl font-bold mb-2 text-emerald-700">Thank you for your details!</h3>
-                        <p class="text-slate-700 mb-3">We will get back to you shortly.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-emerald-700" data-i18n="tnx_title">Thank you for your details!</h3>
+                        <p class="text-slate-700 mb-3" data-i18n="tnx_desc">We will get back to you shortly.</p>
                         <button 
                             id="close-thank-you"
                             class="mt-2 bg-emerald-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-emerald-700 transition"
+                            data-i18n="btn_ok"
                         >OK</button>
                     </div>
                 </div>
@@ -866,6 +929,7 @@
 
             // Show/hide correct buttons for current step
             function updateStepButtons() {
+                const lang = localStorage.getItem('tidestay_lang') || 'en';
                 const activePanel = stepperForm.querySelector('.step-panel[data-active="true"]');
                 if (!activePanel) return;
                 const step = parseInt(activePanel.getAttribute('data-step'), 10);
@@ -874,11 +938,12 @@
                 if (step === 3) {
                     stepNextBtn.style.display = "none";
                     stepSubmitBtn.style.display = "";
+                    stepSubmitBtn.textContent = lang === 'en' ? "Send Request" : "Enviar Pedido";
                 } else {
                     stepNextBtn.style.display = "";
                     stepSubmitBtn.style.display = "none";
                     // Always ensure button text is "Next"
-                    stepNextBtn.textContent = "Next";
+                    stepNextBtn.textContent = lang === 'en' ? "Next" : "Seguinte";
                 }
                 // On Step 1, hide "Back" button (visibility: hidden); else show
                 if (step === 1) {
@@ -889,6 +954,20 @@
                     stepBackBtn.style.visibility = "";
                     stepBackBtn.style.opacity = "1";
                     stepBackBtn.disabled = false;
+                }
+
+                // Optionally set form status
+                const status = document.getElementById('step-form-status');
+                if (status) {
+                    let msg = "";
+                    if (step === 1) {
+                        msg = lang === 'en' ? "Please add the property location to continue." : "Por favor, adicione a localização da propriedade.";
+                    } else if (step === 2) {
+                        msg = lang === 'en' ? "Please select the property condition to continue." : "Por favor, selecione o estado da propriedade.";
+                    } else if (step === 3) {
+                        msg = lang === 'en' ? "Ready when you are. Send your details." : "Tudo pronto. Envie os seus dados.";
+                    }
+                    status.textContent = msg;
                 }
             }
 
@@ -901,25 +980,45 @@
 
             // Utility: Validate the current step (should match existing JS)
             function validateStep(stepNum) {
+                const lang = localStorage.getItem('tidestay_lang') || 'en';
+                const status = document.getElementById('step-form-status');
                 if (stepNum === 1) {
                     const loc = document.getElementById("step1-location");
-                    return loc && loc.value.trim().length > 0;
+                    if (!loc || loc.value.trim().length === 0) {
+                        if (status) {
+                            status.textContent = lang === 'en' ? "Please add the property location to continue." : "Por favor, adicione a localização da propriedade.";
+                        }
+                        return false;
+                    }
                 }
                 if (stepNum === 2) {
                     const cond = document.getElementById("step2-condition");
-                    return cond && cond.value && cond.value !== "";
+                    if (!cond || !cond.value || cond.value === "") {
+                        if (status) {
+                            status.textContent = lang === 'en' ? "Please select the property condition to continue." : "Por favor, selecione o estado da propriedade.";
+                        }
+                        return false;
+                    }
                 }
                 if (stepNum === 3) {
                     const name = document.getElementById("step3-name");
                     const email = document.getElementById("step3-email");
                     const phone = document.getElementById("step3-phone");
-                    return (
-                        name && name.value.trim().length > 0 &&
+                    if (
+                        !(name && name.value.trim().length > 0 &&
                         email && email.value.trim().length > 0 &&
-                        phone && phone.value.trim().length > 0
-                    );
+                        phone && phone.value.trim().length > 0)
+                    ) {
+                        if (status) {
+                            status.textContent = lang === 'en' ? "Please complete your contact details correctly." : "Por favor, preencha os seus dados de contacto corretamente.";
+                        }
+                        return false;
+                    }
                 }
-                return false;
+                if (status && stepNum === 3) {
+                    status.textContent = lang === 'en' ? "Ready when you are. Send your details." : "Tudo pronto. Envie os seus dados.";
+                }
+                return true;
             }
 
             // Move to a specific step (1, 2, 3)
@@ -1039,416 +1138,223 @@
         })();
     </script>
 
-    <!-- FAQ Section -->
-    <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-4xl md:text-6xl italic text-slate-900">FAQ</h2>
-                <p class="text-slate-500 mt-4 font-light italic text-lg md:text-2xl">
-                    Everything owners often ask before choosing short- or long-term management.
-                </p>
-            </div>
-
-            <div class="luxury-card p-6 md:p-10 rounded-[2rem]">
-                <div class="max-w-2xl mx-auto">
-                    <label class="block">
-                        <span class="text-slate-700 font-semibold text-sm">Search questions</span>
-                        <input
-                            id="faq-search"
-                            type="search"
-                            autocomplete="off"
-                            placeholder="Type a keyword (tax, license, maintenance...)"
-                            class="mt-2 w-full rounded-2xl border border-slate-200 bg-white/70 px-5 py-4 text-slate-800 outline-none focus:ring-2 focus:ring-slate-300"
-                        />
-                    </label>
-                    <div class="text-slate-500 text-xs md:text-sm font-light italic mt-3 text-center">
-                        Tip: Try “tax”, “license”, “maintenance”, “SEF”.
-                    </div>
-                </div>
-
-                <div class="mt-10 space-y-4 md:space-y-5">
-                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
-                        <summary class="cursor-pointer flex items-start justify-between gap-4">
-                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">How is rental income taxed in Portugal?</span>
-                            <span class="text-slate-400 font-light">+</span>
-                        </summary>
-                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
-                            Tax treatment depends on your situation (individual vs company), property type, and deductions you qualify for.
-                            We help you stay organized with the reporting that usually comes with guest stays, but you should confirm the final tax calculation with a qualified accountant.
-                        </div>
-                    </details>
-
-                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
-                        <summary class="cursor-pointer flex items-start justify-between gap-4">
-                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">Do I need a license for short-term rentals (AL)?</span>
-                            <span class="text-slate-400 font-light">+</span>
-                        </summary>
-                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
-                            In many cases, short-term rentals require a Local Accommodation registration/license (often referred to as “AL”).
-                            Requirements can vary by municipality and can change over time. We can guide you on what applies to your property and help manage the operations, while you confirm legal requirements with the right local professionals.
-                        </div>
-                    </details>
-
-                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
-                        <summary class="cursor-pointer flex items-start justify-between gap-4">
-                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">What about SEF/guest reporting and tourist tax?</span>
-                            <span class="text-slate-400 font-light">+</span>
-                        </summary>
-                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
-                            Depending on the current rules, guest data reporting and tourist tax processes must be handled correctly.
-                            As part of our management, we make sure the required steps are handled so you have peace of mind—again, final responsibility and tax specifics should be verified with your advisor.
-                        </div>
-                    </details>
-
-                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
-                        <summary class="cursor-pointer flex items-start justify-between gap-4">
-                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">How do you handle maintenance and repairs?</span>
-                            <span class="text-slate-400 font-light">+</span>
-                        </summary>
-                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
-                            We use a structured approach: preventive check-ins, clear cleaning coordination, and fast response when issues happen.
-                            For minor repairs and urgent items, we coordinate with trusted local professionals and document everything so your property remains in excellent condition.
-                        </div>
-                    </details>
-
-                    <details class="faq-item rounded-2xl border border-slate-100 bg-white/60 p-5 md:p-7">
-                        <summary class="cursor-pointer flex items-start justify-between gap-4">
-                            <span class="text-slate-900 font-semibold text-lg md:text-xl text-left">Who manages utilities and ongoing costs?</span>
-                            <span class="text-slate-400 font-light">+</span>
-                        </summary>
-                        <div class="mt-3 text-slate-600 leading-relaxed font-light">
-                            It depends on your agreement. In our premium options, we can manage utilities (water/electric/internet coordination) and keep costs predictable.
-                            We also plan around recurring monthly expenses so owners understand the real net outcome.
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 md:py-32 px-6 bg-white border-t border-slate-100">
-        <div class="max-w-3xl mx-auto text-center">
-            <h4 class="text-4xl md:text-5xl italic mb-8 text-slate-900 tracking-tight leading-tight">Looking for something specific?</h4>
-            <p class="text-xl text-slate-500 mb-12 font-light">
-                Because we keep our portfolio small, we have the luxury of being <strong>flexible</strong>. We can tailor any plan to fit your unique needs. Let's talk.
-            </p>
-            <a href="https://wa.me/351913593411?text=Hi%20TideStay,%20I%20would%20like%20to%20hear%20more%20about%20your%20management%20plans" 
-               target="_blank" rel="noopener noreferrer"
-               class="whatsapp-btn text-white px-10 md:px-16 py-5 md:py-6 rounded-full text-xl md:text-2xl font-bold hover:scale-105 transition transform inline-flex items-center">
-               <svg class="w-8 h-8 mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.489.881 3.297 1.346 5.142 1.346h.005c5.446 0 9.879-4.433 9.882-9.879.001-2.638-1.027-5.118-2.9-6.989s-4.352-2.902-6.99-2.902c-5.447 0-9.879 4.432-9.882 9.878 0 2.012.597 3.978 1.727 5.672l-.39 1.424 1.411-.37zm11.238-7.31c-.3-.15-1.772-.875-2.046-.975s-.475-.15-.675.15-.775.975-.95 1.175-.35.225-.65.075c-.3-.15-1.265-.466-2.41-1.487-.892-.795-1.492-1.777-1.667-2.077s-.019-.462.13-.611c.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5s.05-.375-.025-.525-.675-1.625-.925-2.225c-.244-.589-.491-.51-.675-.519s-.375-.011-.575-.011-.525.075-.8.375c-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.116 3.231 5.125 4.53 1.05.453 1.625.599 2.188.777.712.225 1.36.194 1.872.118.571-.085 1.772-.725 2.022-1.425s.25-1.3.175-1.425-.275-.225-.575-.375z"/></svg>
-               Chat with us on WhatsApp
-            </a>
-        </div>
-    </section>
-
-    <script>
-        (function () {
-            const $ = (id) => document.getElementById(id);
-
-            const purchaseEl = $("roi-purchase");
-            const renovationEl = $("roi-renovation");
-            const rentEl = $("roi-rent");
-            const calcBtn = $("roi-calc");
-
-            const annualNetEl = $("roi-annual-net");
-            const percentEl = $("roi-percent");
-            const hintEl = $("roi-hint");
-
-            // Currency formatting
-            const fmtEUR = (n) => new Intl.NumberFormat(undefined, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
-            const fmtPct = (n) => new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(n);
-
-            const parse = (v) => {
-                const n = Number.parseFloat(String(v).trim().replace(",", "."));
-                return Number.isFinite(n) ? n : NaN;
-            };
-
-            function calculate() {
-                const purchase = parse(purchaseEl.value);
-                const renovation = parse(renovationEl.value);
-                const rent = parse(rentEl.value);
-
-                if (!Number.isFinite(purchase) || !Number.isFinite(renovation) || !Number.isFinite(rent)) {
-                    annualNetEl.textContent = "—";
-                    percentEl.textContent = "—";
-                    hintEl.textContent = "Enter the numbers to see an estimate.";
-                    return;
-                }
-
-                const fixedCostsMonthly = 200;
-                const managementRate = 0.20;
-
-                // Net profit after fixed costs and management fee
-                const monthlyNet = rent - fixedCostsMonthly - (managementRate * rent);
-                const annualNet = monthlyNet * 12;
-
-                const investment = purchase + renovation;
-                const roi = investment > 0 ? (annualNet / investment) * 100 : 0;
-
-                annualNetEl.textContent = fmtEUR(annualNet);
-                percentEl.textContent = fmtPct(roi);
-
-                if (annualNet >= 0) {
-                    hintEl.textContent = "This is an estimate based on the inputs provided.";
-                } else {
-                    hintEl.textContent = "Estimated net profit is negative. Consider adjusting assumptions.";
-                }
-            }
-
-            // Recalculate instantly when user types (feels responsive)
-            [purchaseEl, renovationEl, rentEl].forEach((el) => {
-                el.addEventListener("input", calculate);
-                el.addEventListener("change", calculate);
-            });
-
-            calcBtn.addEventListener("click", calculate);
-
-            // FAQ search: filters questions by keyword
-            const faqSearchEl = document.getElementById("faq-search");
-            if (faqSearchEl) {
-                const faqItems = Array.from(document.querySelectorAll(".faq-item"));
-                faqItems.forEach((el) => {
-                    el.dataset.faqText = (el.innerText || "").toLowerCase();
-                });
-
-                const filterFaq = () => {
-                    const q = (faqSearchEl.value || "").trim().toLowerCase();
-                    faqItems.forEach((el) => {
-                        const text = (el.dataset.faqText || "");
-                        el.style.display = q.length === 0 || text.includes(q) ? "" : "none";
-                    });
-                };
-
-                faqSearchEl.addEventListener("input", filterFaq);
-                filterFaq();
-            }
-
-            // Step-by-Step form: 3 steps + smooth transitions + email submission (mailto)
-            const stepperForm = $("property-stepper");
-            if (stepperForm) {
-                const panels = [1, 2, 3].map((n) => document.getElementById(`step-panel-${n}`));
-                const stepDots = [1, 2, 3].map((n) => document.getElementById(`step-dot-${n}`));
-                const panelsWrap = document.getElementById("step-panels");
-
-                const backBtn = $("step-back");
-                const nextBtn = $("step-next");
-                const statusEl = $("step-form-status");
-
-                const locationEl = $("step1-location");
-                const conditionEl = $("step2-condition");
-                const notesEl = $("step2-notes");
-                const nameEl = $("step3-name");
-                const emailEl = $("step3-email");
-                const phoneEl = $("step3-phone");
-
-                let currentStep = 1;
-
-                const setStatus = (msg) => {
-                    if (!statusEl) return;
-                    statusEl.textContent = msg || "";
-                };
-
-                const setInvalid = (el, isInvalid) => {
-                    if (!el) return;
-                    const cls = ["border-red-200", "ring-red-200", "bg-red-50/40"];
-                    if (isInvalid) {
-                        el.classList.add(...cls);
-                    } else {
-                        el.classList.remove(...cls);
-                    }
-                };
-
-                const validateStep = (step) => {
-                    setStatus("");
-                    let ok = true;
-
-                    if (step === 1) {
-                        if (!locationEl || !String(locationEl.value).trim()) {
-                            ok = false;
-                            setInvalid(locationEl, true);
-                            setStatus("Please add the property location to continue.");
-                        } else {
-                            setInvalid(locationEl, false);
-                        }
-                    }
-
-                    if (step === 2) {
-                        if (!conditionEl || !String(conditionEl.value).trim()) {
-                            ok = false;
-                            setInvalid(conditionEl, true);
-                            setStatus("Please select the property condition to continue.");
-                        } else {
-                            setInvalid(conditionEl, false);
-                        }
-                    }
-
-                    if (step === 3) {
-                        const emailOk = !!emailEl && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(emailEl.value).trim());
-                        const nameOk = !!nameEl && String(nameEl.value).trim().length >= 2;
-                        const phoneOk = !!phoneEl && String(phoneEl.value).trim().length >= 5;
-
-                        if (!nameOk) {
-                            ok = false;
-                            setInvalid(nameEl, true);
-                        } else {
-                            setInvalid(nameEl, false);
-                        }
-
-                        if (!emailOk) {
-                            ok = false;
-                            setInvalid(emailEl, true);
-                        } else {
-                            setInvalid(emailEl, false);
-                        }
-
-                        if (!phoneOk) {
-                            ok = false;
-                            setInvalid(phoneEl, true);
-                        } else {
-                            setInvalid(phoneEl, false);
-                        }
-
-                        if (!ok) setStatus("Please complete your contact details correctly.");
-                    }
-
-                    return ok;
-                };
-
-                const updateDots = () => {
-                    stepDots.forEach((dot, idx) => {
-                        const stepNum = idx + 1;
-                        if (!dot) return;
-                        dot.classList.remove("is-active", "is-done");
-                        if (stepNum < currentStep) {
-                            dot.classList.add("is-done");
-                        } else if (stepNum === currentStep) {
-                            dot.classList.add("is-active");
-                        }
-                    });
-                };
-
-                const showStep = (stepNum) => {
-                    if (stepNum < 1 || stepNum > 3) return;
-                    currentStep = stepNum;
-
-                    const activePanel = panels[stepNum - 1];
-                    if (panelsWrap && activePanel) {
-                        panelsWrap.style.minHeight = `${activePanel.offsetHeight}px`;
-                    }
-
-                    panels.forEach((panel, idx) => {
-                        if (!panel) return;
-                        const isActive = idx === stepNum - 1;
-                        panel.dataset.active = isActive ? "true" : "false";
-                    });
-
-                    updateDots();
-
-                    if (backBtn) backBtn.disabled = stepNum === 1;
-                    if (nextBtn) nextBtn.textContent = stepNum === 2 ? "Next" : "Next";
-                    setStatus(stepNum === 3 ? "Ready when you are. Send your details." : "");
-                };
-
-                const openEmail = () => {
-                    const to = "tidestay.management@gmail.com";
-
-                    const location = locationEl ? String(locationEl.value).trim() : "";
-                    const condition = conditionEl ? String(conditionEl.value).trim() : "";
-                    const notes = notesEl ? String(notesEl.value).trim() : "";
-                    const name = nameEl ? String(nameEl.value).trim() : "";
-                    const email = emailEl ? String(emailEl.value).trim() : "";
-                    const phone = phoneEl ? String(phoneEl.value).trim() : "";
-
-                    const subject = `Property inquiry - ${location || "Portugal"}`;
-                    const body = [
-                        "New property inquiry via TideStay website",
-                        "",
-                        "1) Property location:",
-                        location || "-",
-                        "",
-                        "2) Property condition:",
-                        condition || "-",
-                        notes ? `Additional notes: ${notes}` : "",
-                        "",
-                        "3) Contact details:",
-                        `Name: ${name || "-"}`,
-                        `Email: ${email || "-"}`,
-                        `Phone / WhatsApp: ${phone || "-"}`,
-                    ].join("\n");
-
-                    // Opens the user's email client with all fields pre-filled.
-                    // Submit the form via Formspree (AJAX)
-                    fetch("https://formspree.io/f/xqegqekn", {
-                        method: "POST",
-                        headers: {
-                            "Accept": "application/json",
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            location,
-                            condition,
-                            notes,
-                            name,
-                            email,
-                            phone,
-                            _subject: subject
-                        })
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            setStatus("Thank you! Your details have been sent successfully.");
-                            stepperForm.reset();
-                            showStep(1);
-                        } else {
-                            setStatus("There was an issue sending your form. Please try again.");
-                        }
-                    })
-                    .catch(() => {
-                        setStatus("There was an error connecting to the server. Please try again.");
-                    });
-                };
-
-                if (backBtn) {
-                    backBtn.addEventListener("click", () => {
-                        if (currentStep > 1) showStep(currentStep - 1);
-                    });
-                }
-
-                if (nextBtn) {
-                    nextBtn.addEventListener("click", () => {
-                        if (!validateStep(currentStep)) return;
-                        if (currentStep < 3) showStep(currentStep + 1);
-                    });
-                }
-
-                stepperForm.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    if (!validateStep(3)) return;
-                    setStatus("Opening your email client…");
-                    openEmail();
-                });
-
-                // Init
-                showStep(1);
-            }
-        })();
-    </script>
-
     <!-- Footer -->
     <footer class="py-16 md:py-24 bg-[#fdfbf7] border-t border-slate-100 text-center">
-        <div class="text-2xl md:text-3xl italic text-slate-900 mb-4 font-serif">TideStay Ericeira</div>
+        <div class="text-2xl md:text-3xl italic text-slate-900 mb-4 font-serif" data-i18n="footer_brand">TideStay Ericeira</div>
         <div class="mb-8 px-4 flex flex-col items-center gap-4">
             <a href="mailto:tidestay.management@gmail.com" class="text-slate-500 hover:text-slate-800 transition font-light italic text-lg border-b border-transparent hover:border-slate-300">
                 tidestay.management@gmail.com
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61586898594027" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-600 transition font-light italic flex items-center gap-3">
+            <a href="https://www.facebook.com/profile.php?id=61586898594027" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-600 transition font-light italic flex items-center gap-3" data-i18n="footer_fb">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 Follow us on Facebook
             </a>
         </div>
-        <p class="text-slate-400 text-xs tracking-[0.4em] uppercase font-light">Boutique Property Management &copy; 2024</p>
+        <p class="text-slate-400 text-xs tracking-[0.4em] uppercase font-light" data-i18n="footer_copy">Boutique Property Management &copy; 2024</p>
     </footer>
+    <!-- Language Translation Engine -->
+    <script>
+      const translations = {
+        "en": {
+          "hero_title": "TideStay Ericeira",
+          "hero_subtitle": "Boutique Property Management",
+          "about_title": "Professional Management,<br>Personal Care",
+          "feature1_title": "Curated Excellence",
+          "feature1_desc": "We favor quality over volume. By limiting our portfolio, we ensure every property receives our uncompromising, high-end attention.",
+          "feature2_title": "Family-Driven Touch",
+          "feature2_desc": "You’re not just a client; you’re part of our inner circle. We manage every home with the personal care of a dedicated family team.",
+          "feature3_title": "Proactive Peace of Mind",
+          "feature3_desc": "From 24/7 support to meticulous on-site inspections, we bridge professional management with total reliability.",
+          "plans_title": "Our Plans",
+          "plans_subtitle": "Tailored to fit your needs, finalized together.",
+          "mgmt_fee": "Management Fee",
+          "plan1_title": "Smart",
+          "plan1_tags": "Efficient • Digital • High-Yield",
+          "p1_li1_b": "Professional Listing:", "p1_li1_t": " Full optimization on Airbnb & Booking.com.",
+          "p1_li2_b": "Dynamic Pricing:", "p1_li2_t": " AI-driven daily price adjustments.",
+          "p1_li3_b": "24/7 Guest Support:", "p1_li3_t": " We handle all inquiries and relations.",
+          "p1_li4_b": "Seamless Self Check-in:", "p1_li4_t": " Digital arrival guides & smart-lock.",
+          "p1_li5_b": "Cleaning Coordination:", "p1_li5_t": " Professional automated scheduling.",
+          "p1_li6_b": "Legal Compliance:", "p1_li6_t": " SEF reporting and Tourist Tax.",
+          "plan2_badge": "The Personal Choice",
+          "plan2_title": "Popular",
+          "plan2_tags": "Hands-On • Professional • Stress-Free",
+          "everything_smart": "Everything in Smart, plus:",
+          "p2_li1_b": "Personal Welcome:", "p2_li1_t": " In-person check-in for a boutique touch.",
+          "p2_li2_b": "Quality Inspections:", "p2_li2_t": " We physically verify every cleaning.",
+          "p2_li3_b": "Linen & Laundry:", "p2_li3_t": " Management of hotel-grade linens.",
+          "p2_li4_b": "On-Site Support:", "p2_li4_t": " Handling minor repairs and technical issues.",
+          "p2_li5_b": "Local Welcome Gift:", "p2_li5_t": " Curated treats for 5-star reviews.",
+          "plan3_title": "Plus",
+          "plan3_tags": "Total Peace • Premium Care",
+          "everything_popular": "Everything in Popular, plus:",
+          "p3_li1_b": "Weekly Inspections:", "p3_li1_t": " Essential for the coastal climate.",
+          "p3_li2_b": "Utility Management:", "p3_li2_t": " We handle all bills (Water, Elec, Net).",
+          "p3_li3_b": "Ericeira Concierge:", "p3_li3_t": " Booking surfing, transfers, and dining.",
+          "p3_li4_b": "Interior Styling:", "p3_li4_t": " Professional seasonal decor updates.",
+          "p3_li5_b": "Performance Analytics:", "p3_li5_t": " Monthly financial deep-dives.",
+          "test_title": "What Our Partners Say",
+          "roi_title": "Check Your Profitability",
+          "roi_subtitle": "Use this quick estimate to understand the profitability potential before choosing TideStay for long-term or short-term management.",
+          "roi_purchase_label": "Purchase Price (€)", "roi_purchase_ph": "e.g. 250000",
+          "roi_renov_label": "Renovation Costs (€)", "roi_renov_ph": "e.g. 30000",
+          "roi_rent_label": "Expected Monthly Rent (€)", "roi_rent_ph": "e.g. 3500",
+          "roi_btn": "Calculate ROI",
+          "roi_note": "We subtract 200€ fixed costs/month + 20% management fee.",
+          "roi_results_title": "Your Results",
+          "roi_annual_label": "Annual Net Profit",
+          "form_title": "Property Inquiry",
+          "form_subtitle": "Tell us where your property is and we will get back to you.",
+          "step1_tab": "1. Location", "step2_tab": "2. Condition", "step3_tab": "3. Contact",
+          "step1_label": "1) Where is the property located?", "step1_ph": "e.g. Ericeira / São Sebastião / near Lisbon",
+          "step1_hint": "You can write city, neighborhood, or approximate area.",
+          "step2_label": "2) What is the property condition?",
+          "step2_opt1": "Select one", "step2_opt2": "Renovated / Updated", "step2_opt3": "New / Recently refurbished", "step2_opt4": "Older but ready for rentals", "step2_opt5": "In progress", "step2_opt6": "Not sure yet",
+          "step2_notes_label": "Optional notes", "step2_notes_ph": "Any details that could help us advise you (size, upgrades, timeline...)",
+          "step3_name_label": "3) Your name", "step3_name_ph": "Full name",
+          "step3_email_label": "Email", "step3_email_ph": "name@example.com",
+          "step3_phone_label": "Phone / WhatsApp",
+          "step3_hint": "After you press Send, we will receive your inquiry and get back to you shortly.",
+          "btn_back": "Back", "btn_next": "Next", "btn_send": "Send Request",
+          "tnx_title": "Thank you for your details!", "tnx_desc": "We will get back to you shortly.", "btn_ok": "OK",
+          "faq_title": "FAQ",
+          "faq_subtitle": "Everything owners often ask before choosing short- or long-term management.",
+          "faq_search_label": "Search questions", "faq_search_ph": "Type a keyword (tax, license, maintenance...)",
+          "faq_tip": "Tip: Try “tax”, “license”, “maintenance”, “SEF”.",
+          "faq1_q": "How is rental income taxed in Portugal?",
+          "faq1_a": "Tax treatment depends on your situation (individual vs company), property type, and deductions you qualify for. We help you stay organized with the reporting that usually comes with guest stays, but you should confirm the final tax calculation with a qualified accountant.",
+          "faq2_q": "Do I need a license for short-term rentals (AL)?",
+          "faq2_a": "In many cases, short-term rentals require a Local Accommodation registration/license (often referred to as “AL”). Requirements can vary by municipality and can change over time. We can guide you on what applies to your property and help manage the operations, while you confirm legal requirements with the right local professionals.",
+          "faq3_q": "What about SEF/guest reporting and tourist tax?",
+          "faq3_a": "Depending on the current rules, guest data reporting and tourist tax processes must be handled correctly. As part of our management, we make sure the required steps are handled so you have peace of mind—again, final responsibility and tax specifics should be verified with your advisor.",
+          "faq4_q": "How do you handle maintenance and repairs?",
+          "faq4_a": "We use a structured approach: preventive check-ins, clear cleaning coordination, and fast response when issues happen. For minor repairs and urgent items, we coordinate with trusted local professionals and document everything so your property remains in excellent condition.",
+          "faq5_q": "Who manages utilities and ongoing costs?",
+          "faq5_a": "It depends on your agreement. In our premium options, we can manage utilities (water/electric/internet coordination) and keep costs predictable. We also plan around recurring monthly expenses so owners understand the real net outcome.",
+          "cta_title": "Looking for something specific?",
+          "cta_desc": "Because we keep our portfolio small, we have the luxury of being <strong>flexible</strong>. We can tailor any plan to fit your unique needs. Let's talk.",
+          "cta_btn": "Chat with us on WhatsApp",
+          "footer_brand": "TideStay Ericeira",
+          "footer_fb": "Follow us on Facebook",
+          "footer_copy": "Boutique Property Management &copy; 2024"
+        },
+        "pt": {
+          "hero_title": "TideStay Ericeira",
+          "hero_subtitle": "Gestão de Propriedades Boutique",
+          "about_title": "Gestão Profissional,<br>Cuidado Pessoal",
+          "feature1_title": "Excelência Seleta",
+          "feature1_desc": "Privilegiamos a qualidade em detrimento do volume. Ao limitarmos o nosso portfólio, garantimos que cada propriedade recebe uma atenção rigorosa e de excelência.",
+          "feature2_title": "Toque Familiar",
+          "feature2_desc": "Não é apenas um cliente; faz parte do nosso círculo mais próximo. Gerimos cada casa com o cuidado pessoal de uma equipa familiar dedicada.",
+          "feature3_title": "Tranquilidade Proativa",
+          "feature3_desc": "Desde o apoio 24/7 a inspeções minuciosas no local, aliamos a gestão profissional a uma fiabilidade total.",
+          "plans_title": "Os Nossos Planos",
+          "plans_subtitle": "Adaptados às suas necessidades, finalizados em conjunto.",
+          "mgmt_fee": "Taxa de Gestão",
+          "plan1_title": "Smart",
+          "plan1_tags": "Eficiente • Digital • Alta Rentabilidade",
+          "p1_li1_b": "Anúncio Profissional:", "p1_li1_t": " Otimização total no Airbnb e Booking.com.",
+          "p1_li2_b": "Preços Dinâmicos:", "p1_li2_t": " Ajustes diários de preços gerados por IA.",
+          "p1_li3_b": "Apoio ao Hóspede 24/7:", "p1_li3_t": " Tratamos de todas as questões e contactos.",
+          "p1_li4_b": "Self Check-in Simples:", "p1_li4_t": " Guias de chegada digitais e fechadura inteligente.",
+          "p1_li5_b": "Coordenação de Limpezas:", "p1_li5_t": " Agendamento profissional automatizado.",
+          "p1_li6_b": "Conformidade Legal:", "p1_li6_t": " Comunicação ao SEF e Taxa Turística.",
+          "plan2_badge": "A Escolha Mais Popular",
+          "plan2_title": "Popular",
+          "plan2_tags": "Acompanhamento • Profissional • Sem Stresse",
+          "everything_smart": "Tudo no plano Smart, mais:",
+          "p2_li1_b": "Receção Pessoal:", "p2_li1_t": " Check-in presencial para um toque boutique.",
+          "p2_li2_b": "Inspeções de Qualidade:", "p2_li2_t": " Verificamos fisicamente todas as limpezas.",
+          "p2_li3_b": "Roupas e Lavandaria:", "p2_li3_t": " Gestão de roupas de cama com qualidade de hotel.",
+          "p2_li4_b": "Apoio no Local:", "p2_li4_t": " Tratamento de pequenas reparações e problemas técnicos.",
+          "p2_li5_b": "Oferta de Boas-vindas:", "p2_li5_t": " Mimos selecionados para avaliações de 5 estrelas.",
+          "plan3_title": "Plus",
+          "plan3_tags": "Paz Total • Cuidado Premium",
+          "everything_popular": "Tudo no plano Popular, mais:",
+          "p3_li1_b": "Inspeções Semanais:", "p3_li1_t": " Essencial para o clima costeiro.",
+          "p3_li2_b": "Gestão de Despesas:", "p3_li2_t": " Tratamos de todas as faturas (Água, Luz, Net).",
+          "p3_li3_b": "Concierge na Ericeira:", "p3_li3_t": " Marcação de surf, transfers e restaurantes.",
+          "p3_li4_b": "Styling de Interiores:", "p3_li4_t": " Atualizações profissionais da decoração sazonal.",
+          "p3_li5_b": "Análise de Desempenho:", "p3_li5_t": " Análise financeira mensal detalhada.",
+          "test_title": "O Que Dizem os Nossos Parceiros",
+          "roi_title": "Verifique a Sua Rentabilidade",
+          "roi_subtitle": "Use esta estimativa rápida para entender o potencial de rentabilidade antes de escolher a TideStay.",
+          "roi_purchase_label": "Preço de Compra (€)", "roi_purchase_ph": "ex. 250000",
+          "roi_renov_label": "Custos de Renovação (€)", "roi_renov_ph": "ex. 30000",
+          "roi_rent_label": "Renda Mensal Esperada (€)", "roi_rent_ph": "ex. 3500",
+          "roi_btn": "Calcular ROI",
+          "roi_note": "Subtraímos 200€ de custos fixos/mês + 20% de taxa de gestão.",
+          "roi_results_title": "Os Seus Resultados",
+          "roi_annual_label": "Lucro Líquido Anual",
+          "form_title": "Pedido de Informação",
+          "form_subtitle": "Diga-nos onde fica a sua propriedade e entraremos em contacto.",
+          "step1_tab": "1. Localização", "step2_tab": "2. Estado", "step3_tab": "3. Contacto",
+          "step1_label": "1) Onde se localiza a propriedade?", "step1_ph": "ex. Ericeira / São Sebastião / perto de Lisboa",
+          "step1_hint": "Pode escrever a cidade, bairro ou área aproximada.",
+          "step2_label": "2) Qual o estado da propriedade?",
+          "step2_opt1": "Selecione uma opção", "step2_opt2": "Renovada / Atualizada", "step2_opt3": "Nova / Remodelada recentemente", "step2_opt4": "Antiga mas pronta para arrendar", "step2_opt5": "Em obras", "step2_opt6": "Ainda não tenho a certeza",
+          "step2_notes_label": "Notas opcionais", "step2_notes_ph": "Qualquer detalhe que nos ajude a aconselhá-lo (tamanho, melhorias, prazos...)",
+          "step3_name_label": "3) O seu nome", "step3_name_ph": "Nome completo",
+          "step3_email_label": "Email", "step3_email_ph": "nome@exemplo.com",
+          "step3_phone_label": "Telefone / WhatsApp",
+          "step3_hint": "Após clicar em Enviar, receberemos o seu pedido e entraremos em contacto em breve.",
+          "btn_back": "Voltar", "btn_next": "Seguinte", "btn_send": "Enviar Pedido",
+          "tnx_title": "Obrigado pelos seus dados!", "tnx_desc": "Entraremos em contacto consigo em breve.", "btn_ok": "OK",
+          "faq_title": "Perguntas Frequentes",
+          "faq_subtitle": "Tudo o que os proprietários costumam perguntar antes de escolher a gestão.",
+          "faq_search_label": "Pesquisar perguntas", "faq_search_ph": "Escreva uma palavra-chave (impostos, licença, manutenção...)",
+          "faq_tip": "Dica: Tente \"impostos\", \"licença\", \"manutenção\", \"SEF\".",
+          "faq1_q": "Como são tributados os rendimentos de arrendamento em Portugal?",
+          "faq1_a": "O tratamento fiscal depende da sua situação (particular vs empresa), tipo de propriedade e deduções a que tem direito. Ajudamos a manter tudo organizado com os relatórios que normalmente acompanham as estadias, mas deve confirmar o cálculo final dos impostos com um contabilista certificado.",
+          "faq2_q": "Preciso de licença para Alojamento Local (AL)?",
+          "faq2_a": "Na maioria dos casos, os arrendamentos de curta duração exigem um registo/licença de Alojamento Local (AL). Os requisitos podem variar consoante o município. Podemos orientá-lo sobre o que se aplica à sua propriedade e ajudar a gerir as operações, enquanto confirma os requisitos legais com os profissionais certos.",
+          "faq3_q": "E quanto à comunicação ao SEF e taxa turística?",
+          "faq3_a": "Dependendo das regras em vigor, os processos de comunicação de dados dos hóspedes e taxa turística devem ser tratados corretamente. Como parte da nossa gestão, garantimos que os passos necessários são dados para que tenha paz de espírito.",
+          "faq4_q": "Como lidam com a manutenção e reparações?",
+          "faq4_a": "Usamos uma abordagem estruturada: verificações preventivas, coordenação clara das limpezas e resposta rápida quando ocorrem problemas. Para pequenas reparações e assuntos urgentes, coordenamos com profissionais locais de confiança.",
+          "faq5_q": "Quem gere as despesas e custos contínuos (Água, Luz...)?",
+          "faq5_a": "Depende do nosso acordo. Nas opções premium, podemos gerir as despesas (coordenação de água/eletricidade/internet) e manter os custos previsíveis. Também planeamos as despesas mensais recorrentes para que os proprietários percebam o resultado líquido real.",
+          "cta_title": "Procura algo específico?",
+          "cta_desc": "Como mantemos o nosso portfólio reduzido, temos o privilégio de ser <strong>flexíveis</strong>. Podemos adaptar qualquer plano às suas necessidades únicas. Vamos conversar.",
+          "cta_btn": "Fale connosco no WhatsApp",
+          "footer_brand": "TideStay Ericeira",
+          "footer_fb": "Siga-nos no Facebook",
+          "footer_copy": "Gestão de Propriedades Boutique &copy; 2024"
+        }
+      };
 
+      document.addEventListener('DOMContentLoaded', () => {
+        const langToggle = document.getElementById('lang-toggle');
+        if (!langToggle) return;
+
+        let currentLang = localStorage.getItem('tidestay_lang') || 'en';
+        
+        window.updateLanguage = (lang) => {
+          document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+              if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = translations[lang][key];
+              } else if (el.tagName === 'OPTION') {
+                el.textContent = translations[lang][key];
+              } else {
+                el.innerHTML = translations[lang][key];
+              }
+            }
+          });
+          
+          langToggle.textContent = lang === 'en' ? 'PT' : 'EN';
+          document.documentElement.lang = lang;
+        };
+
+        window.updateLanguage(currentLang);
+
+        langToggle.addEventListener('click', () => {
+          currentLang = currentLang === 'en' ? 'pt' : 'en';
+          localStorage.setItem('tidestay_lang', currentLang);
+          window.updateLanguage(currentLang);
+        });
+      });
+    </script>
 </body>
 </html>
