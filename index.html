@@ -14,16 +14,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="text-slate-800 overflow-x-hidden">
-    <div class="fixed top-6 right-6 md:top-8 md:right-8 z-[100]">
-        <button id="lang-toggle" class="bg-white/80 backdrop-blur-md border border-slate-200 text-slate-800 px-4 py-2 rounded-full font-bold shadow-sm hover:shadow-md transition text-sm tracking-wide">
+    <!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-[1000] bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm px-6 md:px-12 py-4 flex justify-between items-center transition-all">
+    <!-- Logo Left -->
+    <a href="#" class="flex-shrink-0">
+        <img src="images/logo.png" alt="TideStay Logo" class="h-10 md:h-12 w-auto">
+    </a>
+    
+    <!-- Navigation Links & Lang Toggle Right -->
+    <div class="flex items-center gap-6 md:gap-10">
+        <!-- Links -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider text-slate-700 uppercase">
+            <a href="#about" class="hover:text-[#7fc6db] transition-colors duration-300">About</a>
+            <a href="#plans" class="hover:text-[#7fc6db] transition-colors duration-300">Our Plans</a>
+            <a href="#calculator" class="hover:text-[#7fc6db] transition-colors duration-300">Calculator</a>
+            <a href="#contact" class="hover:text-[#7fc6db] transition-colors duration-300">Contact</a>
+        </div>
+        
+        <!-- Language Toggle -->
+        <button id="lang-toggle" class="bg-white border border-slate-200 text-slate-800 px-4 py-2 rounded-full font-bold shadow-sm hover:shadow-md transition text-xs md:text-sm tracking-wide">
             PT
         </button>
     </div>
+</nav>
     <!-- Hero Section -->
     <header class="hero-bg min-h-screen flex items-center justify-center text-center px-6">
         <div class="max-w-5xl animate-fade-up">
             <!-- Brand Logo -->
-            <img src="images/logo.png" alt="TideStay Logo" class="brand-logo">
             
             <!-- הקטנתי את הגודל מ-text-7xl/text-9xl ל-text-6xl/text-8xl -->
             <h1 class="text-6xl md:text-8xl text-slate-900 mb-6 tracking-tight" data-i18n="hero_title">TideStay Ericeira</h1>
@@ -289,7 +306,10 @@
             </div>
         </div>
     </section>
+<!-- Calculator Section -->
+<section id="calculator" class="py-20 md:py-32 bg-[#fdfbf7]">
 
+</section>
     <!-- ROI Calculator Section -->
     <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
         <div class="max-w-6xl mx-auto">
@@ -399,7 +419,9 @@
             </div>
         </div>
     </section>
-
+    <section id="contact" class="...">
+        <!-- הטופס, המייל והפרטים שלכם נמצאים כאן -->
+    </section>
     <!-- Step-by-Step Form -->
     <section class="py-20 md:py-28 px-6 bg-[#fdfbf7] border-t border-slate-100">
         <div class="max-w-6xl mx-auto">
