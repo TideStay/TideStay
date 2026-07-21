@@ -43,7 +43,7 @@
             box-shadow: var(--luxury-shadow);
             position: relative;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Subtle glossy sheen on hover */
@@ -235,8 +235,6 @@
             width: 100%;
             display: block;
             height: auto;
-            /* bug: 'aspect-ratio: auto;' is incorrect and unsupported in many browsers, should use an actual ratio or remove */
-            /* aspect-ratio: auto; */ 
             /* Show the full image (no cropping) */
             object-fit: contain;
             object-position: center;
@@ -296,7 +294,7 @@
 
         /* FAQ: remove default disclosure marker for a cleaner look */
         .faq-item summary {
-            list-style: none;
+            list-style-type: none; /* Fix: was using list-style instead of list-style-type */
             cursor: pointer;
         }
         .faq-item summary::-webkit-details-marker {
@@ -343,6 +341,3 @@
                 max-width: 100px;
             }
         }
-    
-
-    
