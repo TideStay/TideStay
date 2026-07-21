@@ -1,4 +1,4 @@
-
+        
         /* Brand + luxury feel */
         :root {
             --luxury-ink: #0f172a; /* slate-900 */
@@ -7,9 +7,16 @@
             --luxury-shadow: 0 20px 45px rgba(2, 6, 23, 0.08);
         }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fdfbf7; scroll-behavior: smooth; }
-        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fdfbf7;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
         
         .hero-bg {
             background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2)), 
@@ -30,6 +37,7 @@
 
         .luxury-card {
             background: rgba(255, 255, 255, 0.9);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(226, 232, 240, 0.8);
             box-shadow: var(--luxury-shadow);
@@ -71,6 +79,7 @@
 
         .testimonial-card {
             background: rgba(255, 255, 255, 0.92);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-left: 4px solid rgba(148, 163, 184, 0.9);
             box-shadow: 0 18px 38px rgba(2, 6, 23, 0.06);
@@ -89,7 +98,8 @@
             width: 100%;
             display: block;
             height: auto;
-            aspect-ratio: auto;
+            /* bug: 'aspect-ratio: auto;' is incorrect and unsupported in many browsers, should use an actual ratio or remove */
+            /* aspect-ratio: auto; */ 
             /* Show the full image (no cropping) */
             object-fit: contain;
             object-position: center;
@@ -150,6 +160,7 @@
         /* FAQ: remove default disclosure marker for a cleaner look */
         .faq-item summary {
             list-style: none;
+            cursor: pointer;
         }
         .faq-item summary::-webkit-details-marker {
             display: none;
@@ -160,10 +171,6 @@
             position: relative;
         }
         .step-panel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             opacity: 0;
             transform: translateY(10px);
             pointer-events: none;
@@ -182,6 +189,7 @@
             border: 1px solid rgba(148, 163, 184, 0.35);
             transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
             flex: 0 0 auto;
+            display: inline-block;
         }
         .step-dot.is-active {
             background: #10b981;
