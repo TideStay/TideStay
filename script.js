@@ -338,4 +338,52 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('tidestay_lang', currentLang);
     window.updateLanguage(currentLang);
   });
+
+  // -------- ROI Calculator Logic --------
+  const roiBtn = document.getElementById('roi-calc');
+  if (roiBtn) {
+    roiBtn.addEventListener('click', function() {
+      const purchaseInput = document.getElementById('roi-purchase');
+      const renovInput = document.getElementById('roi-renovation');
+      const rentInput = document.getElementById('roi-rent');
+      const annualNetEl = document.getElementById('roi-annual-net');
+      const roiPercentEl = document.getElementById('roi-percent');
+      const roiHint = document.getElementById('roi-hint');
+
+      // Parse values
+      const purchaseVal = Number((purchaseInput && purchaseInput.value) ? purchaseInput.value.replace(/[^\d.]/g,'').replace(/,/g,'') : "");
+      const renovVal = Number((renovInput && renovInput.value) ? renovInput.value.replace(/[^\d.]/g,'').replace(/,/g,'') : "");
+      const rentVal = Number((rentInput && rentInput.value) ? rentInput.value.replace(/[^\d.]/g,'').replace(/,/g,'') : "");
+
+      if (
+        !purchaseInput || !renovInput || !rentInput || !annualNetEl || !roiPercentEl ||
+        isNaN(purchaseVal) || isNaN(renovVal) || isNaN(rentVal) ||
+        purchaseVal <= 0 || rentVal <= 0 || renovVal < 0
+      ) {
+        // If inputs are missing or invalid
+        return;
+      }
+
+      // 2. Total Investment
+      const totalInvestment = purchaseVal + renovVal;
+      // 3. Monthly Gross Rent
+      const monthlyGrossRent = rentVal;
+      // 4. Monthly Net Profit
+      const monthlyNetProfit = monthlyGrossRent - 200 - (monthlyGrossRent * 0.20);
+      // 5. Annual Net Profit
+      const annualNetProfit = monthlyNetProfit * 12;
+      // 6. ROI Percentage
+      const roiPct = (totalInvestment > 0) ? (annualNetProfit / totalInvestment) * 100 : 0;
+
+      // 7. Update DOM
+      let locale = currentLang === "pt" ? "pt-PT" : "en-US";
+      let formattedAnnual = annualNetProfit.toLocaleString(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+      annualNetEl.textContent = formattedAnnual;
+      roiPercentEl.textContent = roiPct.toFixed(1);
+
+      if (roiHint) {
+        roiHint.style.display = "none";
+      }
+    });
+  }
 });
