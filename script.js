@@ -18,10 +18,10 @@
         if (stepNextBtn && stepSubmitBtn) {
             if (step === 3) {
                 stepNextBtn.style.display = "none";
-                stepSubmitBtn.style.display = "";
+                stepSubmitBtn.style.display = "inline-block";
                 stepSubmitBtn.textContent = lang === 'en' ? "Send Request" : "Enviar Pedido";
             } else {
-                stepNextBtn.style.display = "";
+                stepNextBtn.style.display = "inline-block";
                 stepSubmitBtn.style.display = "none";
                 stepNextBtn.textContent = lang === 'en' ? "Next" : "Seguinte";
             }
@@ -32,11 +32,12 @@
                 stepBackBtn.style.opacity = "0";
                 stepBackBtn.disabled = true;
             } else {
-                stepBackBtn.style.visibility = "";
+                stepBackBtn.style.visibility = "visible";
                 stepBackBtn.style.opacity = "1";
                 stepBackBtn.disabled = false;
             }
         }
+   
 
         const status = document.getElementById('step-form-status');
         if (status) {
