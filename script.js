@@ -211,6 +211,7 @@ const translations = {
         "hero_title": "TideStay",
         "hero_subtitle": "We treat your property <span class='font-serif italic font-medium text-[#b8860b]'>like it's our own</span>. Uncompromising boutique management for total peace of mind.",
         "hero_btn_contact": "Request a Proposal",
+        "hero_btn_book": "Book a Stay", // <-- שורה חדשה להוסיף
         "hero_btn_plans": "View Our Plans",
         "about_title": "Professional Management,<br>Personal Care",
         "feature1_title": "Curated Excellence",
@@ -310,6 +311,7 @@ const translations = {
         "hero_title": "TideStay",
         "hero_subtitle": "Cuidamos da sua propriedade <span class='font-serif italic font-medium text-[#b8860b]'>como se fosse nossa</span>. Gestão boutique rigorosa para total tranquilidade.",
         "hero_btn_contact": "Pedir Proposta",
+        "hero_btn_book": "Reservar uma Estadia", // <-- שורה חדשה להוסיף
         "hero_btn_plans": "Ver os Planos",
         "about_title": "Gestão Profissional,<br>Cuidado Pessoal",
         "feature1_title": "Excelência Seleta",
